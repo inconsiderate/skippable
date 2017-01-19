@@ -1,0 +1,171 @@
+html, body {
+  font-size: 16px;
+  background-color: #FCFFFA;
+}
+
+.comment-reply-form {
+    display: none;
+}
+
+.ui.checkbox {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#submit-new-post-button {
+    margin-bottom: 25px;
+}
+
+.myname {
+    font-size: 1.5rem;
+}
+
+.container .ui.header.divider {
+    margin: 0.5em 0em 2em 0em
+}
+
+a {
+    font-weight: bold;
+}
+
+.ui.horizontal.inverted.divider {
+    margin: 2em 0em;
+}
+
+.masthead.center.aligned.segment {
+    text-shadow: 1px 1px 1px black;
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+}
+
+.masthead.center.aligned.segment .text {
+    position: inherit;
+}
+
+.masthead.center.aligned.segment:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-image: url("marvel.jpg");
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.ui.inverted.vertical.footer.segment {
+    margin-top: 3em;
+}
+
+.ui.two.column.very.relaxed.grid {
+    position: relative;
+}
+
+a.ui.button.sort-ascending {
+    border-top-right-radius: 0.28571429rem;
+    border-bottom-right-radius: 0.28571429rem;
+}
+
+#marvelbutton, #dcbutton {
+    margin-right: 10px;
+}
+
+#infotext {
+    margin-bottom: 2em;
+}
+
+.masthead h1.ui.header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 2em;
+    font-weight: normal;
+}
+
+#currentList.header {
+    text-align: right;
+    margin-bottom: 25px;
+}
+
+#upcomingList.header {
+    text-align: right;
+    margin-bottom: 25px;
+}
+
+.fc-toolbar {
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+    background-color: #FCFFFA;
+}
+
+.ui.list > .item h3.header {
+    margin-bottom: 5px;
+}
+
+#calendar {
+    background-color: white;
+    opacity: 0.9;
+}
+
+#calendar-share-button {
+    float: right;
+}
+
+.orion-bootstrap-admin img {
+    max-width: 2.5em;
+}
+
+.movie-image {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+
+
+.ui.fluid.card {
+    margin: 0.5em 0em;
+}
+
+
+i.icon {
+    margin: 0 !important;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+
+a:hover {
+    color:black;
+}
+
+.ui.cards>.card img.avatar, .ui.cards>.card .avatar img, .ui.card img.avatar, .ui.card .avatar img {
+    width: 2.25em;
+    height: 2.25em;
+}
+
+.ui.dimmable.image {
+    height: 130px;
+}
+
+.ui.blurring.dimmable.medium.image {
+    height: 130px !important;
+}
+
+div.ui.items>.item>.image:not(.ui) {
+    width: 45px;
+}
+
+.ui.items>.item:first-child {
+    margin-top: inherit;
+}
+
+.card .content .extra.content {
+    margin-top: 30px;
+}

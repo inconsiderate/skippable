@@ -1,0 +1,47 @@
+<template name="homepage">
+    <div class="ui center aligned container">
+        <h3 class="ui horizontal header divider"><span>Recently Added Series</span></h3>
+        <table class="ui very basic collapsing celled striped table">
+            <thead>
+            <tr>
+                <th></th>
+                <th class="five wide"></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each recentSeries}}
+                <a href="/series/{{slug}}">
+                <tr>
+                    <td class="middle aligned">
+                        <img class="ui mini rounded image" src={{logo.url}}>
+                    </td>
+                    <td>
+                        <h4 class="ui image header">
+                            <div class="content">
+                                {{ title }}
+                                <div class="sub header">{{ studio }}
+                                </div>
+                            </div>
+                        </h4>
+                    </td>
+                    <td>
+                        {{{ description }}}
+                    </td>
+                    <td>
+                        {{ startDateFormatted }}
+                    </td>
+                </tr>
+                </a>
+            {{/each}}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</template>

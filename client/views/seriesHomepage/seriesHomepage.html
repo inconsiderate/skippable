@@ -1,0 +1,39 @@
+<template name="seriesHomepage">
+    <div class="ui container">
+        <br/>
+        <div class="ui centered huge header">{{title}}</div>
+        <br/>
+        <div>{{{description}}}</div>
+        <br/>
+        <div class="ui centered header">Episode List</div>
+        <div class="ui centered relaxed grid">
+            {{#each seriesArcs}}
+                {{> singleArcButton }}
+            {{/each}}
+        </div>
+        <div class="ui centered">
+            {{#each episodes}}
+                {{> singleEpisode }}
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="singleEpisode">
+    <p>{{title}}</p>
+    <p>{{{description}}}</p>
+    <div>
+        {{#each episodeArcs}}
+            {{> singleArcLabel }}
+        {{/each}}
+    </div>
+    <hr>
+</template>
+
+<template name="singleArcButton">
+    <button class="ui small {{colour}} button">{{title}}</button>
+</template>
+
+<template name="singleArcLabel">
+    <span class="ui mini {{colour}} tag label">{{title}}</span>
+</template>

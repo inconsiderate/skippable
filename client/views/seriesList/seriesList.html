@@ -1,0 +1,64 @@
+<template name="seriesList">
+    <div class="container" id="series-list-container">
+        <div class="ui divided items">
+            <br/>
+            <br/>
+            {{#each allSeries}}
+            {{> listAllSeries}}
+        {{/each}}
+        </div>
+    </div>
+</template>
+
+
+<template name="listAllSeries">
+<div class="item" id="{{slug}}">
+	{{#if banner}}
+	<div class="ui blurring dimmable medium image">
+		<div class="ui dimmer">
+			<div class="content">
+				<div class="center">
+				{{#if watchnow}}
+					<div class="ui inverted button"><a href={{watchnow}} target="_blank"><i class="video play outline icon"></i> Watch Now</a></div>
+				{{ else }}
+					{{ #if trailer }}
+					<div class="ui inverted button"><a href={{trailer}} target="_blank"><i class="video play outline icon"></i> Watch Trailer</a></div>
+					{{ else }}
+					<div>Media Not Available</div>
+					{{/if}}
+				{{/if}}
+				</div>
+			</div>
+		</div>
+		<img style="min-width: 350px !important;" class="ui fluid dimmable image">
+		<div style="background: url('{{banner.url}}') no-repeat; background-size:cover; background-position: center; height: 130px;">
+		</div>
+	</div>
+	{{/if}}
+	<div class="content">
+		<div class="header">{{title}}</div>
+		<span class="right floated">
+            <a href="/series/{{slug}}">see episodes<i class="right chevron icon"></i></a></span>
+	  	<div class="meta">
+			<span class="release">
+				{{startDateFormatted}}
+			</span>
+		</div>
+		<div class="description">
+		{{#if description}}
+			{{{description}}}
+		{{else}}
+			Details unknown at this time.
+		{{/if}}
+		</div>
+	 	<div class="extra">
+		{{#if studio}}
+			<div class="ui bottom left floated item">{{studio}}</div>
+		{{/if}}
+		{{#if trakt}}
+			<div class="ui bottom right floated item"><a href={{trakt}} target="_blank">trakt<i class="right chevron icon"></i></a></div>
+		{{/if}}
+	  	</div>
+	</div>
+</div>
+</template>

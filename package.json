@@ -1,0 +1,24 @@
+{
+  "name": "skippable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "routes.js",
+  "dependencies": {
+    "babel-runtime": "^6.20.0",
+    "bcrypt": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}
