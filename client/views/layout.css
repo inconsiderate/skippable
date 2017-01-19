@@ -7,6 +7,15 @@ html, body {
     font-size: 15px;
 }
 
+.series-image {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 300px;
+    width: 200px;
+}
+
+
+
 .comment-reply-form {
     display: none;
 }

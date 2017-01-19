@@ -6,7 +6,8 @@
             <br/>
             <div>{{{description}}}</div>
             <br/>
-            <div class="ui centered header">Arc Filters</div>
+            <br/>
+            <br/>
             <div class="ui centered relaxed grid">
                 {{#each seriesArcs}}
                     {{> singleArcButton }}
@@ -15,6 +16,8 @@
         {{/with}}
 
         <div class="ui centered">
+            <br/>
+            <br/>
             {{#each filteredEpisodes}}
                 {{> singleEpisode }}
             {{/each}}
@@ -23,14 +26,13 @@
 </template>
 
 <template name="singleEpisode">
-    <p>{{title}}</p>
+    <h3 class="ui horizontal header divider"><span>{{title}}</span></h3>
     <p>{{{description}}}</p>
     <div>
         {{#each episodeArcs}}
             {{> singleArcLabel }}
         {{/each}}
     </div>
-    <hr>
 </template>
 
 <template name="singleArcButton">

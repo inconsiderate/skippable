@@ -42,8 +42,8 @@ if (Meteor.isServer) {
             arcs: []
         });
 
-        var buffys01e01 = Episodes.insert({
-            title: 'The First Episode',
+        var buffy01 = Episodes.insert({
+            title: 'Welcome to the Hellmouth (1)',
             season: 1,
             number: 1,
             seriesId: buffy,
@@ -54,8 +54,8 @@ if (Meteor.isServer) {
             arcIds: []
         });
 
-        var buffys01e02 = Episodes.insert({
-            title: 'The Second Episode',
+        var buffy02 = Episodes.insert({
+            title: 'The Harvest (2)',
             season: 1,
             number: 2,
             seriesId: buffy,
@@ -65,27 +65,144 @@ if (Meteor.isServer) {
             slug: 'the-second-episode',
             arcIds: []
         });
+        var buffy03 = Episodes.insert({
+            title: 'Witch',
+            season: 1,
+            number: 3,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-third-episode',
+            arcIds: []
+        });
+        var buffy04 = Episodes.insert({
+            title: "Teacher's Pet",
+            season: 1,
+            number: 4,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-fourth-episode',
+            arcIds: []
+        });
 
+        var buffy05 = Episodes.insert({
+            title: 'Never Kill a Boy on the First Date',
+            season: 1,
+            number: 5,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-fifth-episode',
+            arcIds: []
+        });
+
+        var buffy06 = Episodes.insert({
+            title: 'The Pack',
+            season: 1,
+            number: 6,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-sixth-episode',
+            arcIds: []
+        });
+
+        var buffy07 = Episodes.insert({
+            title: 'Angel',
+            season: 1,
+            number: 7,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-seventh-episode',
+            arcIds: []
+        });
+
+        var buffy08 = Episodes.insert({
+            title: 'I, Robot... You, Jane',
+            season: 1,
+            number: 8,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-eight-episode',
+            arcIds: []
+        });
+
+        var buffy09 = Episodes.insert({
+            title: 'The Puppet Show',
+            season: 1,
+            number: 9,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-nine-episode',
+            arcIds: []
+        });
+
+        var buffy10 = Episodes.insert({
+            title: 'Nightmares',
+            season: 1,
+            number: 10,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-ten-episode',
+            arcIds: []
+        });
+
+        var buffy11 = Episodes.insert({
+            title: 'Out of Mind, Out of Sight',
+            season: 1,
+            number: 11,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-11-episode',
+            arcIds: []
+        });
+
+        var buffy12 = Episodes.insert({
+            title: 'Prophecy Girl',
+            season: 1,
+            number: 12,
+            seriesId: buffy,
+            description: 'This is the first episode.',
+            airDate: new Date(),
+            lastUpdate: new Date(),
+            slug: 'the-12-episode',
+            arcIds: []
+        });
         var buffySeasonPlot = Arcs.insert({
             title: 'Season Main Plot',
             seriesId: buffy,
             colour: 'red',
-            episodeIds: [buffys01e01, buffys01e02]
+            episodeIds: [buffy01, buffy02]
         });
         var buffyWillow = Arcs.insert({
             title: 'Willow',
             seriesId: buffy,
             colour: 'blue',
-            episodeIds: [buffys01e02]
+            episodeIds: [buffy02]
         });
         var buffyAnya = Arcs.insert({
             title: 'Anya',
             seriesId: buffy,
             colour: 'pink',
-            episodeIds: [buffys01e02, buffys01e01]
+            episodeIds: [buffy02, buffy01]
         });
 
-        var buffyEpisodes = [ buffys01e01, buffys01e02 ];
+        var buffyEpisodes = [ buffy01, buffy02 ];
         var buffyArcs = [buffySeasonPlot, buffyWillow, buffyAnya ];
 
         Series.update(buffy, {
@@ -95,13 +212,13 @@ if (Meteor.isServer) {
             }
         });
 
-        Episodes.update(buffys01e01, {
+        Episodes.update(buffy01, {
             $push: {
                 arcIds: {$each: [buffySeasonPlot, buffyAnya]}
             }
         });
 
-        Episodes.update(buffys01e02, {
+        Episodes.update(buffy02, {
             $push: {
                 arcIds: {$each: buffyArcs}
             }

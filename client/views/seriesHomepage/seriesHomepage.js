@@ -47,14 +47,20 @@ Template.singleArcButton.events({
 
         $(event.target).toggleClass('inverted');
         if (query != null) {
-            var i = query.arcIds.$all.indexOf(id);
-            if(i && i != -1) {
+            i = query.arcIds.$all.indexOf(id);
+            console.log(i);
+            if(i != -1) {
+                console.log('inside');
                 query.arcIds.$all.splice(i, 1);
             } else {
                 query.arcIds.$all.push(id)
             }
         } else {
             query = {arcIds: {$all: [id]}};
+        }
+
+        if (query != null && query.arcIds.$all.length == 0) {
+            query = null;
         }
 
         parent.episode_filter.query = query;

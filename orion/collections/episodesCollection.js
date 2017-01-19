@@ -16,11 +16,11 @@ Episodes = new orion.collection('episodes', {
         columns: [
             { data: 'title', title: orion.helpers.getTranslation('episodes.schema.title') },
             orion.attributeColumn('image', 'poster', orion.helpers.getTranslation('episodes.schema.poster')),
+            {data: 'series',  title: orion.helpers.getTranslation('episodes.schema.series') },
             { data: 'season', title: orion.helpers.getTranslation('episodes.schema.season') },
             { data: 'number', title: orion.helpers.getTranslation('episodes.schema.number') },
             { data: 'airDate', title: orion.helpers.getTranslation('episodes.schema.airDate') },
             { data: 'slug', title: orion.helpers.getTranslation('episodes.schema.slug') },
-            { data: 'description', title: orion.helpers.getTranslation('episodes.schema.description') }
         ]
     }
 });
