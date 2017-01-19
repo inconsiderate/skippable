@@ -35,13 +35,13 @@ Router.route('/series/:_slug', {
     }
 });
 
-// Router.route('/series', {
-//     waitOn: function () {
-//         return Meteor.subscribe('series');
-//     },
-//     action: function() {
-//         this.render('header', {to: 'header'});
-//         this.render('footer', {to: 'footer'});
-//      	this.render('seriesList', {to: 'content'});
-//     }
-// });
+Router.route('/series', {
+    waitOn: function () {
+        return Meteor.subscribe('series');
+    },
+    action: function() {
+        this.render('header', {to: 'header'});
+        this.render('footer', {to: 'footer'});
+     	this.render('seriesList', {to: 'content'});
+    }
+});
