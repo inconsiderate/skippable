@@ -2,7 +2,7 @@
 
 Template.homepage.helpers({
 	recentSeries: function() {
-		var i = Series.find({});
+		var i = Series.find({}, {limit: 3});
 
 		if (i.count() > 0) {
 			return i;
