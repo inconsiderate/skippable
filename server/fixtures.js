@@ -76,13 +76,13 @@ if (Meteor.isServer) {
             title: 'Willow',
             seriesId: buffy,
             colour: 'blue',
-            episodeIds: [buffys01e01, buffys01e02]
+            episodeIds: [buffys01e02]
         });
         var buffyAnya = Arcs.insert({
             title: 'Anya',
             seriesId: buffy,
             colour: 'pink',
-            episodeIds: [buffys01e02]
+            episodeIds: [buffys01e02, buffys01e01]
         });
 
         var buffyEpisodes = [ buffys01e01, buffys01e02 ];
@@ -97,7 +97,7 @@ if (Meteor.isServer) {
 
         Episodes.update(buffys01e01, {
             $push: {
-                arcIds: {$each: buffyArcs}
+                arcIds: {$each: [buffySeasonPlot, buffyAnya]}
             }
         });
 

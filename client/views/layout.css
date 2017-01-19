@@ -3,6 +3,10 @@ html, body {
   background-color: #FCFFFA;
 }
 
+.mini.heart.icon {
+    font-size: 15px;
+}
+
 .comment-reply-form {
     display: none;
 }

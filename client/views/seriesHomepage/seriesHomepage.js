@@ -1,11 +1,25 @@
 
 Template.seriesHomepage.onRendered(function() {
-    // $('.cards .image').dimmer({
-    //     on: 'hover'
-    // });
+
 });
 
 Template.seriesHomepage.helpers({
+    currentSeries: function() {
+        return Series.findOne({slug: Router.current().params._slug});
+    },
+
+    filteredEpisodes: function() {
+        this.episode_filter.dep.depend();
+        var query = this.episode_filter.query;
+
+        console.log(query);
+        if (query == null) {
+            return Episodes.find();
+        } else {
+            return Episodes.find(query);
+        }
+    },
+
     episodes: function() {
         return Episodes.find({seriesId: this._id});
     },
@@ -22,6 +36,30 @@ Template.seriesHomepage.helpers({
 			return false;
 		}
 	}
+});
+
+Template.singleArcButton.events({
+    'click .ui.button': function(event) {
+        var parent = Template.parentData(2);
+        parent.episode_filter.dep.depend();
+        var id = $(event.target).attr('id');
+        var query = parent.episode_filter.query;
+
+        $(event.target).toggleClass('inverted');
+        if (query != null) {
+            var i = query.arcIds.$all.indexOf(id);
+            if(i && i != -1) {
+                query.arcIds.$all.splice(i, 1);
+            } else {
+                query.arcIds.$all.push(id)
+            }
+        } else {
+            query = {arcIds: {$all: [id]}};
+        }
+
+        parent.episode_filter.query = query;
+        parent.episode_filter.dep.changed();
+    }
 });
 
 Template.singleEpisode.helpers({
