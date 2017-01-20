@@ -7,7 +7,7 @@ Template.homepage.helpers({
 			return i;
 		}
 	},
-	
+
 	"startDateFormatted": function(){
 		var m = moment(this.startDate);
 		return moment(m).format("MMMM Do YYYY");
@@ -17,9 +17,11 @@ Template.homepage.helpers({
 
 
 Template.homepage.events({
-	'click #click-me-hard': function(event) {
+	'submit #click-me': function(event) {
+		event.preventDefault();
+		var search = event.target.searchBox.value;
 
-		var result = Meteor.call(pullShit, 1);
+		var result = Meteor.call('gatherSeriesData', search);
 		console.log(result);
 	}
 

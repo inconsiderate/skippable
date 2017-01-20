@@ -11,61 +11,34 @@
             Catch up on an old classic you may have missed, without all those boring filler episodes!
         </div>
         <br/>
-        <div class="ui form centered doubling grid">
-            <div class="ui eight wide column field">
-                <input type="text" placeholder="add a new series (beta)...">
-                <button id="click-me-hard">Click Me</button>
+        {{#if currentUser }}
+            <div class="ui form centered doubling grid">
+                <div class="ui eight wide column field">
+                    <form class="ui form" id="click-me">
+                        <div class="field">
+                            <input type="text" name="searchBox" placeholder="Search Box">
+                        </div>
+                        <button class="ui button" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
-        </div>
+            <h3>Search Results</h3>
+            {{#each searchResults}}
+                <p>testing</p>
+            {{/each}}
+        {{/if}}
         <br/>
         <br/>
         <br/>
 
+
         <h3 class="ui horizontal header divider"><span>Recently Added Series</span></h3>
         <div class="ui equal width centered grid">
-        {{#each recentSeries}}
-            <a href="/series/{{slug}}">
-                <div class="series-image" style="background-image: url('{{poster.url}}')"></div>
-            </a>
-        {{/each}}
+            {{#each recentSeries}}
+                <a href="/series/{{slug}}">
+                    <div class="series-image" style="background-image: url('{{poster.url}}')"></div>
+                </a>
+            {{/each}}
         </div>
-        <!--<table class="ui very basic collapsing celled striped table">-->
-            <!--<thead>-->
-            <!--<tr>-->
-                <!--<th></th>-->
-                <!--<th></th>-->
-                <!--<th></th>-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--{{#each recentSeries}}-->
-                <!--&lt;!&ndash;<a href="/series/{{slug}}">&ndash;&gt;-->
-                <!--<tr>-->
-                    <!--<td>-->
-                        <!--<h4 class="ui image header">-->
-                            <!--<div class="content">-->
-                                <!--{{ title }}-->
-                                <!--<div class="sub header">{{ studio }}-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</h4>-->
-                    <!--</td>-->
-                    <!--<td>-->
-                        <!--{{{ description }}}-->
-                    <!--</td>-->
-                    <!--<td>-->
-                        <!--{{ startDateFormatted }}-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--&lt;!&ndash;</a>&ndash;&gt;-->
-            <!--{{/each}}-->
-            <!--<tr>-->
-                <!--<td></td>-->
-                <!--<td></td>-->
-                <!--<td></td>-->
-                <!--<td></td>-->
-            <!--</tr>-->
-            <!--</tbody>-->
-        <!--</table>-->
     </div>
 </template>
