@@ -14,7 +14,9 @@ html, body {
     width: 200px;
 }
 
-
+.ui.series-blurb.container.grid {
+    margin-top: 50px;
+}
 
 .comment-reply-form {
     display: none;

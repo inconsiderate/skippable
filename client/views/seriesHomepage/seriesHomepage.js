@@ -5,6 +5,7 @@ Template.seriesHomepage.onRendered(function() {
 
 Template.seriesHomepage.helpers({
     currentSeries: function() {
+
         return Series.findOne({slug: Router.current().params._slug});
     },
 
@@ -12,19 +13,21 @@ Template.seriesHomepage.helpers({
         this.episode_filter.dep.depend();
         var query = this.episode_filter.query;
 
-        console.log(query);
         if (query == null) {
             return Episodes.find();
         } else {
+
             return Episodes.find(query);
         }
     },
 
     episodes: function() {
+
         return Episodes.find({seriesId: this._id});
     },
 
     seriesArcs: function() {
+
         return Arcs.find({seriesId: this._id});
     },
 
@@ -33,6 +36,7 @@ Template.seriesHomepage.helpers({
 			var m = moment(this.startDate).utc();
 			return moment(m).format("MMMM Do YYYY");
 		} else {
+
 			return false;
 		}
 	}
@@ -70,6 +74,7 @@ Template.singleArcButton.events({
 
 Template.singleEpisode.helpers({
     episodeArcs: function() {
+
         return Arcs.find({episodeIds: this._id});
     },
 
@@ -78,6 +83,7 @@ Template.singleEpisode.helpers({
             var m = moment(this.startDate).utc();
             return moment(m).format("MMMM Do YYYY");
         } else {
+
             return false;
         }
     }

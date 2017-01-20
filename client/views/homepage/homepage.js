@@ -7,7 +7,7 @@ Template.homepage.helpers({
 			return i;
 		}
 	},
-
+	
 	"startDateFormatted": function(){
 		var m = moment(this.startDate);
 		return moment(m).format("MMMM Do YYYY");

@@ -1,17 +1,21 @@
 <template name="seriesHomepage">
-    <div class="ui container">
-        <br/>
+    <div class="ui series-blurb container grid">
         {{#with currentSeries}}
-            <div class="ui centered huge header">{{title}}</div>
-            <br/>
-            <div>{{{description}}}</div>
-            <br/>
-            <br/>
-            <br/>
-            <div class="ui centered relaxed grid">
-                {{#each seriesArcs}}
-                    {{> singleArcButton }}
-                {{/each}}
+            <div class="four wide column">
+                <img src="{{poster.url}}">
+            </div>
+            <div class="ui twelve wide column">
+                <div class="ui centered huge header">{{title}}</div>
+                <br/>
+                <div>{{{description}}}</div>
+                <br/>
+                <br/>
+                <br/>
+                <div class="ui centered relaxed grid">
+                    {{#each seriesArcs}}
+                        {{> singleArcButton }}
+                    {{/each}}
+                </div>
             </div>
         {{/with}}
 
