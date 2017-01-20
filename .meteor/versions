@@ -37,7 +37,6 @@ email@1.1.18
 fastclick@1.0.13
 fortawesome:fontawesome@4.7.0
 froala:editor@1.2.8
-fullcalendar:fullcalendar@2.9.0
 geojson-utils@1.0.10
 hot-code-push@1.0.4
 html-tools@1.0.11
@@ -59,7 +58,6 @@ less@2.7.8
 livedata@1.0.18
 localstorage@1.0.12
 logging@1.1.16
-lokenx:themoviedbsearch@0.5.0
 matb33:collection-hooks@0.8.4
 meteor@1.6.0
 meteor-base@1.0.4
@@ -108,7 +106,6 @@ reload@1.1.11
 retry@1.0.9
 reywood:publish-composite@1.4.2
 routepolicy@1.0.12
-rzymek:fullcalendar@2.7.2
 semantic:ui@2.2.6_5
 semantic:ui-data@2.2.6_4
 service-configuration@1.0.11
