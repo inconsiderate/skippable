@@ -14,11 +14,11 @@ Series = new orion.collection('series', {
    */
   tabular: {
     columns: [
-		{ data: 'title', title: orion.helpers.getTranslation('series.schema.title') },
-		{ data: 'startDate', title: orion.helpers.getTranslation('series.schema.startDate') },
-      	orion.attributeColumn('image', 'poster', orion.helpers.getTranslation('series.schema.poster')),
-        { data: 'episodeCount', title: orion.helpers.getTranslation('series.schema.episodeCount') },
-        { data: 'slug', title: orion.helpers.getTranslation('series.schema.slug') }
+      { data: 'title', title: orion.helpers.getTranslation('series.schema.title') },
+      { data: 'startDate', title: orion.helpers.getTranslation('series.schema.startDate') },
+      orion.attributeColumn('image', 'poster', orion.helpers.getTranslation('series.schema.poster')),
+      { data: 'episodeCount', title: orion.helpers.getTranslation('series.schema.episodeCount') },
+      { data: 'slug', title: orion.helpers.getTranslation('series.schema.slug') }
     ]
   }
 });

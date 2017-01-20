@@ -4,7 +4,8 @@ Episodes.attachSchema(new SimpleSchema({
         label: 'Title'
     },
     seriesId: orion.attribute('hasOne', {
-        label: 'Series'
+        label: 'Series',
+        optional: true
     }, {
         collection: Series,
         titleField: 'title',
@@ -31,6 +32,11 @@ Episodes.attachSchema(new SimpleSchema({
     number: {
         type: Number,
         label: 'Number'
+    },
+    themoviedb: {
+        type: Number,
+        label: 'Number',
+        optional: true
     },
     airDate: {
         type: Date,
