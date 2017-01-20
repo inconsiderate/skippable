@@ -54,7 +54,7 @@ Series.attachSchema(new SimpleSchema({
         },
         optional: true
     },
-    description: orion.attribute('froala', {
+    description: orion.attribute('summernote', {
         label: orion.helpers.getTranslation('series.schema.description'), // We use this function to make i18n work in autoform
         optional: true
     }),
