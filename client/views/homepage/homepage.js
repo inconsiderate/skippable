@@ -17,9 +17,11 @@ Template.homepage.helpers({
 
 
 Template.homepage.events({
-	'click #click-me-hard': function(event) {
+	'submit #click-me': function(event) {
+		event.preventDefault();
+		var search = event.target.searchBox.value;
 
-		var result = Meteor.call(pullShit, 1);
+		var result = Meteor.call('gatherSeriesData', search);
 		console.log(result);
 	}
 

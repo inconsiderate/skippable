@@ -4,7 +4,8 @@ Episodes.attachSchema(new SimpleSchema({
         label: 'Title'
     },
     seriesId: orion.attribute('hasOne', {
-        label: 'Series'
+        label: 'Series',
+        optional: true
     }, {
         collection: Series,
         titleField: 'title',
@@ -32,6 +33,11 @@ Episodes.attachSchema(new SimpleSchema({
         type: Number,
         label: 'Number'
     },
+    themoviedb: {
+        type: Number,
+        label: 'Number',
+        optional: true
+    },
     airDate: {
         type: Date,
         label: "Air Date",
@@ -42,7 +48,7 @@ Episodes.attachSchema(new SimpleSchema({
         },
         optional: true
     },
-    description: orion.attribute('froala', {
+    description: orion.attribute('summernote', {
         label: orion.helpers.getTranslation('episodes.schema.description'), // We use this function to make i18n work in autoform
         optional: true
     }),

@@ -13,3 +13,7 @@ orion.dictionary.addDefinition('homeText', 'public', {
       return 'Home text';
     }
 });
+
+orion.dictionary.addDefinition('body', 'texts',
+    orion.attribute('summernote')
+);

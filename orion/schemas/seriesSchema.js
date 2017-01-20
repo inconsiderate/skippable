@@ -11,7 +11,11 @@ Series.attachSchema(new SimpleSchema({
         collection: Episodes,        
         titleField: 'title',
         publicationName: 'seriesepisode'
-    }),
+    }),    
+    themoviedb: {
+        type: Number,
+        label: "movieDB ID"
+    },
     arcIds: orion.attribute('hasMany', {
         type: [String],
         label: 'Arcs for this Series',
@@ -50,8 +54,8 @@ Series.attachSchema(new SimpleSchema({
         },
         optional: true
     },
-    description: orion.attribute('froala', {
-        label: orion.helpers.getTranslation('movies.schema.description'), // We use this function to make i18n work in autoform
+    description: orion.attribute('summernote', {
+        label: orion.helpers.getTranslation('series.schema.description'), // We use this function to make i18n work in autoform
         optional: true
     }),
     /**
