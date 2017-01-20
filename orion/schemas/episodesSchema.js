@@ -48,10 +48,15 @@ Episodes.attachSchema(new SimpleSchema({
         },
         optional: true
     },
-    description: orion.attribute('summernote', {
-        label: orion.helpers.getTranslation('episodes.schema.description'), // We use this function to make i18n work in autoform
+    description: {
+        type: String,
+        label: 'Description',
         optional: true
-    }),
+    },
+    // description: orion.attribute('summernote', {
+    //     label: orion.helpers.getTranslation('episodes.schema.description'), // We use this function to make i18n work in autoform
+    //     optional: true
+    // }),
     poster: orion.attribute('image', {
         label: 'Poster Image',
         optional: true
