@@ -11,11 +11,10 @@ Template.seriesHomepage.helpers({
     filteredEpisodes: function() {
         this.episode_filter.dep.depend();
         var query = this.episode_filter.query;
-
         if (query == null) {
-            return Episodes.find();
+            return Episodes.find({}, {sort: {season: 1, number: 1}});
         } else {
-            return Episodes.find(query);
+            return Episodes.find(query, {sort: {season: 1, number: 1}});
         }
     },
 
