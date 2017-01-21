@@ -5,7 +5,6 @@ Template.seriesHomepage.onRendered(function() {
 
 Template.seriesHomepage.helpers({
     currentSeries: function() {
-
         return Series.findOne({slug: Router.current().params._slug});
     },
 
@@ -16,18 +15,15 @@ Template.seriesHomepage.helpers({
         if (query == null) {
             return Episodes.find();
         } else {
-
             return Episodes.find(query);
         }
     },
 
     episodes: function() {
-
         return Episodes.find({seriesId: this._id});
     },
 
     seriesArcs: function() {
-
         return Arcs.find({seriesId: this._id});
     },
 
@@ -36,7 +32,6 @@ Template.seriesHomepage.helpers({
 			var m = moment(this.startDate).utc();
 			return moment(m).format("MMMM Do YYYY");
 		} else {
-
 			return false;
 		}
 	}
@@ -44,12 +39,10 @@ Template.seriesHomepage.helpers({
 
 Template.seriesHomepage.events({
     'click #newTagSubmit': function(event) {
-        var tag = $('#newTagInput').val();
+        var arc = $('#newTagInput').val();
         var series = this._id;
 
-        Meteor.call('addNewTag', tag, series);
-
-
+        Meteor.call('addArcToSeason', arc, series);
 
         $('#newTagInput').val('');
     }
@@ -66,9 +59,7 @@ Template.singleArcButton.events({
         $(event.target).toggleClass('inverted');
         if (query != null) {
             i = query.arcIds.$all.indexOf(id);
-            console.log(i);
             if(i != -1) {
-                console.log('inside');
                 query.arcIds.$all.splice(i, 1);
             } else {
                 query.arcIds.$all.push(id)
@@ -92,6 +83,11 @@ Template.singleEpisode.helpers({
         return Arcs.find({episodeIds: this._id});
     },
 
+    episodeArcChoices: function() {
+
+        return Arcs.find( { episodeIds: { $not: this._id } } )
+    },
+
     "startDateFormatted": function(){
         if (this.releaseDate) {
             var m = moment(this.startDate).utc();
@@ -102,3 +98,17 @@ Template.singleEpisode.helpers({
         }
     }
 });
+
+Template.addArcDropdown.events({
+    'click .addArcButton': function() {
+        var episode = Template.parentData(1)._id;
+        var arc = this._id;
+
+        //update episode, and arc
+        Meteor.call('updateSeasonArc', arc, episode);
+        
+    }
+
+});
+
+

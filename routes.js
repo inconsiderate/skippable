@@ -26,6 +26,9 @@ Router.route('/series/:_slug', {
         this.render('footer', {to: 'footer'});
         this.render('seriesHomepage', {to: 'content'});
     },
+    onAfterAction: function () {
+        $('.ui.dropdown').dropdown();
+    },
     data: {
         episode_filter: {
             dep: new Tracker.Dependency,

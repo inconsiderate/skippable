@@ -32,7 +32,6 @@
         <div class="ui centered container">
             <br/>
             <br/>
-
             <div class="ui accordion">
                 {{#each filteredEpisodes}}
                     {{> singleEpisode }}
@@ -64,8 +63,15 @@
     <div class="content">
         <p>{{{description}}}</p>
         {{#if currentUser }}
-            <div class="ui segment">
-                Add tags
+            <div class="ui four column right aligned doubling grid">
+                <div class="sixteen wide column">
+                    {{#if episodeArcChoices }}
+                        <div>Add Arc to Episode</div>
+                        {{#each episodeArcChoices}}
+                            {{> addArcDropdown }}
+                        {{/each}}
+                    {{/if}}
+                </div>
             </div>
         {{/if}}
     </div>
@@ -79,4 +85,8 @@
 
 <template name="singleArcLabel">
     <span class="ui mini {{colour}} arc tag label">{{title}}</span>
+</template>
+
+<template name="addArcDropdown">
+    <a value="{{slug}}" class="ui {{colour}} circular label addArcButton">{{title}}</a>
 </template>
