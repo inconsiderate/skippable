@@ -18,6 +18,14 @@ html, body {
     margin-top: 50px;
 }
 
+.ui.right.labeled.left.input i{
+    left: 10px;
+}
+
+
+
+
+
 .comment-reply-form {
     display: none;
 }

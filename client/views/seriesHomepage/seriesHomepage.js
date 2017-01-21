@@ -42,6 +42,20 @@ Template.seriesHomepage.helpers({
 	}
 });
 
+Template.seriesHomepage.events({
+    'click #newTagSubmit': function(event) {
+        var tag = $('#newTagInput').val();
+        var series = this._id;
+
+        Meteor.call('addNewTag', tag, series);
+
+
+
+        $('#newTagInput').val('');
+    }
+});
+
+
 Template.singleArcButton.events({
     'click .ui.button': function(event) {
         var parent = Template.parentData(2);

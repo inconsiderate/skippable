@@ -17,12 +17,11 @@ Template.homepage.helpers({
 
 
 Template.homepage.events({
-	'submit #click-me': function(event) {
+	'submit #newSeriesForm': function(event) {
 		event.preventDefault();
 		var search = event.target.searchBox.value;
 
-		var result = Meteor.call('gatherSeriesData', search);
-		console.log(result);
+		Meteor.call('gatherSeriesData', search);
 	}
 
-})
+});

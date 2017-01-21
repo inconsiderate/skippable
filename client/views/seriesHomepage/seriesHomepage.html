@@ -15,6 +15,16 @@
                     {{#each seriesArcs}}
                         {{> singleArcButton }}
                     {{/each}}
+
+                    {{#if currentUser }}
+                        <div class="ui right labeled left icon input">
+                            <i class="tags icon"></i>
+                            <input id="newTagInput" type="text" placeholder="enter new tag">
+                            <a id="newTagSubmit" class="ui tag label">
+                                add tag
+                            </a>
+                        </div>
+                    {{/if}}
                 </div>
             </div>
         {{/with}}
@@ -40,7 +50,7 @@
 </template>
 
 <template name="singleArcButton">
-    <button class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</button>
+    <span class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</span>
 </template>
 
 <template name="singleArcLabel">
