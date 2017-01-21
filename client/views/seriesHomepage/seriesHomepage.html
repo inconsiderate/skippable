@@ -1,6 +1,10 @@
 <template name="seriesHomepage">
     {{#with currentSeries}}
-        <div class="series-background" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{backdrop.url}}');">
+
+        
+
+
+        <div class="series-background" style="background: no-repeat, center top, linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{backdrop.url}}');">
             <div class="ui series-page stackable container inverted grid">
                 <div class="four wide computer only column">
                     <img src="{{poster.url}}">
@@ -13,7 +17,7 @@
                 </div>
 
                 {{#if seriesArcs}}
-                    <div class="ui sixteen wide column segment">
+                    <div class="ui sixteen wide column computer tablet only segment">
                         {{#each seriesArcs}}
                             {{> singleArcButton }}
                         {{/each}}
@@ -32,10 +36,8 @@
                             </div>
                         {{/if}}
 
-
                     </div>
                 {{/if}}
-
             </div>
         </div>
         <div class="ui series-page stackable container grid">
@@ -55,7 +57,6 @@
 </template>
 
 <template name="singleEpisode">
-
     <div class="title">
         <div class="ui grid">
             <div class="ui three wide column">
