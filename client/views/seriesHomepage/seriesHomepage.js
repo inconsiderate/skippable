@@ -1,6 +1,6 @@
 
 Template.seriesHomepage.onRendered(function() {
-
+    $('.ui.accordion').accordion();
 });
 
 Template.seriesHomepage.helpers({
@@ -102,4 +102,3 @@ Template.singleEpisode.helpers({
         }
     }
 });
-

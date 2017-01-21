@@ -29,24 +29,48 @@
             </div>
         {{/with}}
 
-        <div class="ui centered">
+        <div class="ui centered container">
             <br/>
             <br/>
-            {{#each filteredEpisodes}}
-                {{> singleEpisode }}
-            {{/each}}
+
+            <div class="ui accordion">
+                {{#each filteredEpisodes}}
+                    {{> singleEpisode }}
+                {{/each}}
+            </div>
         </div>
     </div>
 </template>
 
 <template name="singleEpisode">
-    <h3 class="ui horizontal header divider"><span>{{title}}</span></h3>
-    <p>{{{description}}}</p>
-    <div>
-        {{#each episodeArcs}}
-            {{> singleArcLabel }}
-        {{/each}}
+
+    <div class="title">
+        <div class="ui grid">
+            <div class="ui three wide column">
+                Season {{season}} - Episode {{number}}
+            </div>
+            <div class="ui eight wide column">
+
+                <span class="ui medium header">{{title}}</span>
+            </div>
+
+            <div class="ui five wide right aligned column">
+                {{#each episodeArcs}}
+                    {{> singleArcLabel }}
+                {{/each}}
+            </div>
+        </div>
     </div>
+    <div class="content">
+        <p>{{{description}}}</p>
+        {{#if currentUser }}
+            <div class="ui segment">
+                Add tags
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="ui section divider"></div>
 </template>
 
 <template name="singleArcButton">

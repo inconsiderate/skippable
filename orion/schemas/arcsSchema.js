@@ -12,7 +12,8 @@ Arcs.attachSchema(new SimpleSchema({
     }),
     episodeIds: orion.attribute('hasMany', {
         type: [String],
-        label: 'Episodes'
+        label: 'Episodes',
+        optional: true
     }, {
         collection: Episodes,
         titleField: 'title',
@@ -20,7 +21,11 @@ Arcs.attachSchema(new SimpleSchema({
     }),
     colour: {
         type: String,
-        label: 'Slug'
+        label: 'colour'
+    },
+    slug: {
+        type: String,
+        label: 'slug'
     },
     /**
      * This attribute sets the user id of the user that created this post automatically.
