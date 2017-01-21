@@ -1,5 +1,5 @@
 <template name="seriesHomepage">
-    <div class="ui series-blurb container grid">
+    <div class="ui series-blurb container stackable grid">
         {{#with currentSeries}}
             <div class="four wide column">
                 <img src="{{poster.url}}">
@@ -8,18 +8,23 @@
                 <div class="ui centered huge header">{{title}}</div>
                 <br/>
                 <div>{{{description}}}</div>
-                <br/>
-                <br/>
-                <br/>
-                <div class="ui centered relaxed grid">
+            </div>
+
+            {{#if seriesArcs}}
+                <div class="ui sixteen wide column segment">
                     {{#each seriesArcs}}
                         {{> singleArcButton }}
                     {{/each}}
-
+                </div>
+            {{/if}}
+            <div class="ui sixteen wide column">
+                <div class="ui centered relaxed grid">
                     {{#if currentUser }}
                         <div class="ui right labeled left icon input">
                             <i class="tags icon"></i>
-                            <input id="newTagInput" type="text" placeholder="enter new tag">
+                            <input id="newTagInputTitle" type="text" placeholder="title">
+                            <input id="newTagInputColour" type="text" placeholder="colour">
+                            <input id="newTagInputDescription" type="text" placeholder="description">
                             <a id="newTagSubmit" class="ui tag label">
                                 add tag
                             </a>
@@ -46,18 +51,19 @@
     <div class="title">
         <div class="ui grid">
             <div class="ui three wide column">
-                Season {{season}} - Episode {{number}}
+                <span class="season-icon">S {{season}}</span> <span class="season-icon">E {{number}}</span>
             </div>
             <div class="ui eight wide column">
-
                 <span class="ui medium header">{{title}}</span>
             </div>
 
-            <div class="ui five wide right aligned column">
-                {{#each episodeArcs}}
-                    {{> singleArcLabel }}
-                {{/each}}
-            </div>
+            {{#if episodeArcChoices }}
+                <div class="ui five wide right aligned column">
+                    {{#each episodeArcs}}
+                        {{> singleArcLabel }}
+                    {{/each}}
+                </div>
+            {{/if}}
         </div>
     </div>
     <div class="content">
@@ -79,8 +85,16 @@
     <div class="ui section divider"></div>
 </template>
 
+<template name="singleArcDescription">
+    <div>
+        <span class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</span> - {{{description}}}
+    </div>
+    <div class="ui section divider"></div>
+</template>
+
 <template name="singleArcButton">
-    <span class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</span>
+    <span class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</span> - {{{description}}}
+    <div class="ui section divider"></div>
 </template>
 
 <template name="singleArcLabel">

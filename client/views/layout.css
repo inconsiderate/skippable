@@ -27,7 +27,17 @@ html, body {
     left: 10px;
 }
 
+.season-icon {
+    background-color: #ffc4c4;
+    border: solid 1px;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
 
+.ui.section.divider {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
 
 
 

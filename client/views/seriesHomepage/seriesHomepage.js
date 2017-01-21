@@ -36,12 +36,14 @@ Template.seriesHomepage.helpers({
 
 Template.seriesHomepage.events({
     'click #newTagSubmit': function(event) {
-        var arc = $('#newTagInput').val();
+        var arc = $('#newTagInputTitle').val();
+        var colour = $('#newTagInputColour').val();
+        var description = $('#newTagInputDescription').val();
         var series = this._id;
 
-        Meteor.call('addArcToSeason', arc, series);
+        Meteor.call('addArcToSeason', arc, series, colour, description);
 
-        $('#newTagInput').val('');
+        $('#newTagInputTitle').val('');
     }
 });
 

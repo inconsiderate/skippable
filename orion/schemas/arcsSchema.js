@@ -27,6 +27,10 @@ Arcs.attachSchema(new SimpleSchema({
         type: String,
         label: 'slug'
     },
+    description: {
+        type: String,
+        label: 'description'
+    },
     /**
      * This attribute sets the user id of the user that created this post automatically.
      */
