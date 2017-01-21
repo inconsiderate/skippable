@@ -32,8 +32,7 @@ Router.route('/series/:_slug', {
     data: {
         episode_filter: {
             dep: new Tracker.Dependency,
-            query: null,
-            available: Episodes.find()
+            query: null
         }
     }
 });

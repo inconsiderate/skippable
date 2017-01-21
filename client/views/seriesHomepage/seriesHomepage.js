@@ -1,18 +1,16 @@
 
-Template.seriesHomepage.onRendered(function() {
-    $('.ui.accordion').accordion();
-});
-
 Template.seriesHomepage.helpers({
     currentSeries: function() {
         return Series.findOne({slug: Router.current().params._slug});
     },
 
     filteredEpisodes: function() {
-        this.episode_filter.dep.depend();
-        var query = this.episode_filter.query;
+        var parent = Template.parentData(1);
+
+        parent.episode_filter.dep.depend();
+        var query = parent.episode_filter.query;
         if (query == null) {
-            return Episodes.find({}, {sort: {season: 1, number: 1}});
+            return Episodes.find({seriesId: this._id}, {sort: {season: 1, number: 1}});
         } else {
             return Episodes.find(query, {sort: {season: 1, number: 1}});
         }
@@ -78,12 +76,10 @@ Template.singleArcButton.events({
 
 Template.singleEpisode.helpers({
     episodeArcs: function() {
-
         return Arcs.find({episodeIds: this._id});
     },
 
     episodeArcChoices: function() {
-
         return Arcs.find( { episodeIds: { $not: this._id } } )
     },
 
@@ -96,6 +92,10 @@ Template.singleEpisode.helpers({
             return false;
         }
     }
+});
+
+Template.singleEpisode.onRendered(function() {
+    $('.ui.accordion').accordion();
 });
 
 Template.addArcDropdown.events({
