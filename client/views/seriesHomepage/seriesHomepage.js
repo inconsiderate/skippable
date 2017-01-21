@@ -25,9 +25,9 @@ Template.seriesHomepage.helpers({
     },
 
     "startDateFormatted": function(){
-		if (this.releaseDate) {
+		if (this.startDate) {
 			var m = moment(this.startDate).utc();
-			return moment(m).format("MMMM Do YYYY");
+			return moment(m).format("YYYY");
 		} else {
 			return false;
 		}

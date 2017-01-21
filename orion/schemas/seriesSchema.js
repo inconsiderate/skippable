@@ -70,6 +70,10 @@ Series.attachSchema(new SimpleSchema({
         label: 'Poster Image',
         optional: true
     }),
+    backdrop: orion.attribute('image', {
+        label: 'Backdrop Image',
+        optional: true
+    }),
     /**
      * This attribute sets the user id of the user that created this post automatically.
      */
