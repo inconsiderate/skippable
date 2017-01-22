@@ -82,7 +82,12 @@ Template.singleEpisode.helpers({
     },
 
     episodeArcChoices: function() {
-        return Arcs.find( { episodeIds: { $not: this._id } } )
+        var parent = Template.parentData(1);
+
+        return Arcs.find( {
+            seriesId: parent._id,
+            episodeIds: { $not: this._id }
+        } )
     },
 
     "startDateFormatted": function(){
