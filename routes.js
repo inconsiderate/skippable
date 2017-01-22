@@ -22,12 +22,15 @@ Router.route('/series/:_slug', {
         Meteor.subscribe('arcs');
     },
     action: function() {
-        this.render('header', {to: 'header'});
-        this.render('footer', {to: 'footer'});
+        this.render('seriesHeader', {to: 'header'});
+        // this.render('footer', {to: 'footer'});
         this.render('seriesHomepage', {to: 'content'});
     },
     onAfterAction: function () {
-        $('.ui.dropdown').dropdown();
+        $('.ui.sidebar').sidebar({
+        context: $('.pushable.segment'),
+        transition: 'overlay'
+        }).sidebar('attach events', 'a#hamburger-link');
     },
     data: {
         episode_filter: {
@@ -36,6 +39,7 @@ Router.route('/series/:_slug', {
         }
     }
 });
+
 
 Router.route('/series', {
     waitOn: function () {

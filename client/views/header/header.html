@@ -24,3 +24,36 @@
 	</div>
 
 </template>
+
+<template name="seriesHeader">
+    {{#with currentSeries}}
+        <div class="ui inverted vertical center aligned sixteen wide tablet computer only grid segment">
+            <div class="ui container">
+                <div class="ui large secondary inverted pointing menu">
+                    <!--{{> loginButtons}}-->
+                    <a href="/" class="item">home</a>
+                    <a href="/series" class="item">series</a>
+                    <div class="right item">
+                        <h1 class="ui inverted header">Skippable<i class="red mini fitted heart icon"></i>tv</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui inverted vertical center aligned sixteen wide mobile only grid segment">
+            <div class="ui sidebar move inverted vertical menu">
+                <br/>
+                <h1 class="ui inverted header">Filter by Arc</h1>
+                {{#each seriesArcs}}
+                    <a class="sidebar-button item">
+                        <span class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</span>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="ui inverted center aligned sixteen wide mobile only grid segment sticky">
+            <div class="ui inverted mobile huge header">
+                Skippable<i class="red mini fitted heart icon"></i>tv
+            </div>
+        </div>
+    {{/with}}
+</template>

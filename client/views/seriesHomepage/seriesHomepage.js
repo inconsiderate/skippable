@@ -100,6 +100,13 @@ Template.singleEpisode.onRendered(function() {
     $('.ui.accordion').accordion();
 });
 
+Template.seriesHomepage.onRendered(function() {
+
+});
+
+
+
+
 Template.addArcDropdown.events({
     'click .addArcButton': function() {
         var episode = Template.parentData(1)._id;

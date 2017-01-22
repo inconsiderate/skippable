@@ -16,7 +16,7 @@ html, body {
 }
 
 .ui.series-page.container.grid {
-    padding-top: 50px;
+    padding-top: 2em;
 }
 
 .ui.right.labeled.left.input i{
@@ -55,6 +55,32 @@ html, body {
     margin-top: 1em;
 }
 
+.ui.inverted.center.aligned.sixteen.wide.grid.segment {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    margin: 0;
+}
+
+
+.ui.sidebar {
+    right: 50%;
+    visibility: inherit;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.ui.sidebar.move {
+    -webkit-transform: translate(-100%);
+}
+
+.sticky {
+    position: fixed !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+}
 
 
 

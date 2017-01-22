@@ -1,12 +1,10 @@
 <template name="seriesHomepage">
+
     {{#with currentSeries}}
 
-        
-
-
-        <div class="series-background" style="background: no-repeat, center top, linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{backdrop.url}}');">
+        <div class="series-background" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{backdrop.url}}') no-repeat; background-size: cover; background-position: center top;">
             <div class="ui series-page stackable container inverted grid">
-                <div class="four wide computer only column">
+                <div class="four wide computer tablet only column">
                     <img src="{{poster.url}}">
                 </div>
                 <div class="ui twelve wide computer sixteen wide tablet column">
@@ -38,19 +36,21 @@
 
                     </div>
                 {{/if}}
-            </div>
-        </div>
-        <div class="ui series-page stackable container grid">
-            <div class="ui sixteen wide column">
-                <div class="ui centered container">
-                    <br/>
-                    <br/>
-                    <div class="ui accordion">
-                        {{#each filteredEpisodes}}
-                            {{> singleEpisode }}
-                        {{/each}}
+
+                <div class="ui series-page stackable container grid">
+                    <div class="ui sixteen wide column">
+                        <div class="ui centered container">
+                            <br/>
+                            <br/>
+                            <div class="ui accordion">
+                                {{#each filteredEpisodes}}
+                                    {{> singleEpisode }}
+                                {{/each}}
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     {{/with}}
@@ -59,15 +59,15 @@
 <template name="singleEpisode">
     <div class="title">
         <div class="ui grid">
-            <div class="ui three wide column">
-                <span class="season-icon">S {{season}}</span> <span class="season-icon">E {{number}}</span>
+            <div class="ui five wide mobile three wide tablet computer column">
+                <span class="season-icon">S {{season}}</span><br/><span class="season-icon">E {{number}}</span>
             </div>
-            <div class="ui eight wide column">
+            <div class="ui eleven wide mobile eight wide tablet column">
                 <span class="ui medium header">{{title}}</span>
             </div>
 
             {{#if episodeArcChoices }}
-                <div class="ui five wide right aligned column">
+                <div class="ui sixteen wide mobile five wide tablet right aligned column">
                     {{#each episodeArcs}}
                         {{> singleArcLabel }}
                     {{/each}}
