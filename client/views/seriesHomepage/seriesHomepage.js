@@ -78,7 +78,12 @@ Template.singleArcButton.events({
 
 Template.singleEpisode.helpers({
     episodeArcs: function() {
-        return Arcs.find({episodeIds: this._id});
+        var arcs = Arcs.find({episodeIds: this._id});
+        if (arcs.count() > 0) {
+            return arcs;
+        } else {
+            return false;
+        }
     },
 
     episodeArcChoices: function() {
