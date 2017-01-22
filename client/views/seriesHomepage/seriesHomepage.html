@@ -59,15 +59,15 @@
 <template name="singleEpisode">
     <div class="title">
         <div class="ui grid">
-            <div class="ui five wide mobile three wide tablet two wide computer column">
+            <div class="ui two wide computer five wide mobile three wide tablet column">
                 <span class="season-icon">S {{season}}</span><br/><span class="season-icon">E {{number}}</span>
             </div>
-            <div class="ui eleven wide mobile eight wide tablet nine wide computer column">
+            <div class="ui nine wide computer eleven wide mobile eight wide tablet column">
                 <span class="ui medium header">{{title}}</span>
             </div>
 
             {{#if episodeArcs }}
-                <div class="ui sixteen wide mobile five wide tablet five wide computer right aligned column">
+                <div class="ui five wide computer sixteen wide mobile five wide tablet right aligned column">
                     {{#each episodeArcs}}
                         {{> singleArcLabel }}
                     {{/each}}
