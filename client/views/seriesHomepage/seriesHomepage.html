@@ -37,7 +37,7 @@
                     </div>
                 {{/if}}
 
-                <div class="ui series-page stackable container grid">
+                <div class="ui series-page stackable grid">
                     <div class="ui sixteen-wide-column">
                         <div class="ui centered container">
                             <br/>
@@ -59,20 +59,20 @@
 <template name="singleEpisode">
     <div class="title">
         <div class="ui grid">
-            <div class="two-wide-computer three-wide-tablet six-wide-mobile column">
+            <div class="two-wide-computer three-wide-tablet four-wide-mobile column">
                 <span class="season-icon">S {{season}}</span><br/><span class="season-icon">E {{number}}</span>
             </div>
-            <div class="nine-wide-computer eight-wide-tablet ten-wide-mobile column">
+            <div class="fourteen-wide-computer thirteen-wide-tablet twelve-wide-mobile column">
                 <span class="ui medium header">{{title}}</span>
-            </div>
-
             {{#if episodeArcs }}
-                <div class="five-wide-computer five-wide-tablet sixteen-wide-mobile right aligned column">
+                <div class="sixteen-wide right aligned column">
                     {{#each episodeArcs}}
                         {{> singleArcLabel }}
                     {{/each}}
                 </div>
             {{/if}}
+            </div>
+
         </div>
     </div>
     <div class="content">

@@ -26,7 +26,6 @@
 </template>
 
 <template name="seriesHeader">
-    {{#with currentSeries}}
         <div class="ui inverted vertical center aligned sixteen wide tablet computer only grid segment sticky">
             <div class="ui container">
                 <div class="ui large secondary inverted pointing menu">
@@ -45,13 +44,15 @@
                 <br/>
                 <br/>
                 <br/>
-                <a href="/" class="item">home</a>
-                <a href="/series" class="item">series</a>
+                <a href="/" class="sidebar-button item">home</a>
+                <a href="/series" class="sidebar-button item">series</a>
+    {{#with currentSeries}}
                 {{#each seriesArcs}}
                     <a class="sidebar-button item">
                         <span class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</span>
                     </a>
                 {{/each}}
+    {{/with}}
             </div>
         </div>
         <div class="ui inverted center aligned sixteen wide mobile only grid segment sticky" style="padding-top: 1em; padding-bottom: 1em;">
@@ -59,5 +60,4 @@
                 Skippable<i class="red mini fitted heart icon"></i>tv
             </div>
         </div>
-    {{/with}}
 </template>

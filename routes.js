@@ -9,7 +9,7 @@ Router.route('/', {
         return Meteor.subscribe('series');
     },
     action: function() {
-        this.render('header', {to: 'header'});
+        this.render('seriesHeader', {to: 'header'});
         this.render('homepage', {to: 'content'});
     }
 });
@@ -24,12 +24,12 @@ Router.route('/series/:_slug', {
         this.render('seriesHeader', {to: 'header'});
         this.render('seriesHomepage', {to: 'content'});
     },
-    onAfterAction: function () {
-        $('.ui.sidebar').sidebar({
-        context: $('.pushable.segment'),
-        transition: 'overlay'
-        }).sidebar('attach events', 'a#hamburger-link');
-    },
+    // onAfterAction: function () {
+    //     $('.ui.sidebar').sidebar({
+    //     context: $('.pushable.segment'),
+    //     transition: 'overlay'
+    //     }).sidebar('attach events', 'a#hamburger-link');
+    // },
     data: {
         episode_filter: {
             dep: new Tracker.Dependency,
@@ -43,7 +43,7 @@ Router.route('/series', {
         return Meteor.subscribe('series');
     },
     action: function() {
-        this.render('header', {to: 'header'});
+        this.render('seriesHeader', {to: 'header'});
      	this.render('seriesList', {to: 'content'});
     }
 });

@@ -31,31 +31,35 @@ Template.seriesHeader.events({
 
     'click .sidebar-button': function(event) {
         var parent = Template.parentData(2);
-        parent.episode_filter.dep.depend();
-        var id = $(event.target).attr('id');
-        var query = parent.episode_filter.query;
+        if (parent != null) {
+
+            parent.episode_filter.dep.depend();
+            var id = $(event.target).attr('id');
+            var query = parent.episode_filter.query;
+
+
+
+            if (query != null) {
+                i = query.arcIds.$all.indexOf(id);
+                if(i != -1) {
+                    query.arcIds.$all.splice(i, 1);
+                } else {
+                    query.arcIds.$all.push(id)
+                }
+            } else {
+                query = {arcIds: {$all: [id]}};
+            }
+
+            if (query != null && query.arcIds.$all.length == 0) {
+                query = null;
+            }
+
+            parent.episode_filter.query = query;
+            parent.episode_filter.dep.changed();
+        }
 
         $(event.target).toggleClass('inverted');
         $('.ui.sidebar').toggleClass('move');
-
-
-        if (query != null) {
-            i = query.arcIds.$all.indexOf(id);
-            if(i != -1) {
-                query.arcIds.$all.splice(i, 1);
-            } else {
-                query.arcIds.$all.push(id)
-            }
-        } else {
-            query = {arcIds: {$all: [id]}};
-        }
-
-        if (query != null && query.arcIds.$all.length == 0) {
-            query = null;
-        }
-
-        parent.episode_filter.query = query;
-        parent.episode_filter.dep.changed();
     },
 
     'click .ui.inverted.mobile.header': function(event) {

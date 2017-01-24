@@ -83,7 +83,9 @@ html, body {
     z-index: 1000 !important;
 }
 
-
+#series-list-container {
+    margin-top: 3em;
+}
 
 
 
