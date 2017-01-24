@@ -137,3 +137,7 @@ Template.addArcDropdown.events({
 });
 
 
+
+Template.registerHelper('equals', function (a, b) {
+    return a === b;
+});

@@ -24,12 +24,6 @@ Router.route('/series/:_slug', {
         this.render('seriesHeader', {to: 'header'});
         this.render('seriesHomepage', {to: 'content'});
     },
-    // onAfterAction: function () {
-    //     $('.ui.sidebar').sidebar({
-    //     context: $('.pushable.segment'),
-    //     transition: 'overlay'
-    //     }).sidebar('attach events', 'a#hamburger-link');
-    // },
     data: {
         episode_filter: {
             dep: new Tracker.Dependency,
