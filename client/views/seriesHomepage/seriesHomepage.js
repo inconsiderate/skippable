@@ -113,15 +113,15 @@ Template.singleEpisode.helpers({
 });
 
 Template.singleEpisode.events({
-    'click .episode-container': function() {
-        // $("div[id=disqus_thread]").remove();
+    'click .episode-container': function(event) {
         $('#disqus_thread').remove();
         $('#' + this._id).append("<div id='disqus_thread'></div>");
 
         var slug = this.slug;
+        var id = this.id;
         var disqus_config = function () {
             this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
-            this.page.identifier = this.slug;
+            this.page.identifier = slug;
         };
         (function() {
             if (window.DISQUS) {
@@ -129,7 +129,7 @@ Template.singleEpisode.events({
                     reload: true,
                     config: function () {
                         this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
-                        this.page.identifier = this.slug;
+                        this.page.identifier = slug;
                     }
                 });
             } else {
@@ -145,10 +145,6 @@ Template.singleEpisode.events({
 
 Template.singleEpisode.onRendered(function() {
     $('.ui.accordion').accordion();
-
-});
-
-Template.seriesHomepage.onRendered(function() {
 
 });
 
