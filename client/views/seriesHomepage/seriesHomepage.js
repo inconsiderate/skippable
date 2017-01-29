@@ -94,7 +94,6 @@ Template.singleEpisode.helpers({
             episodeIds: { $not: this._id }
         } );
 
-        console.log (arcs.count());
         if (arcs.count() > 0) {
             return arcs;
         } else {
@@ -113,16 +112,45 @@ Template.singleEpisode.helpers({
     }
 });
 
+Template.singleEpisode.events({
+    'click .episode-container': function() {
+        // $("div[id=disqus_thread]").remove();
+        $('#disqus_thread').remove();
+        $('#' + this._id).append("<div id='disqus_thread'></div>");
+
+        var slug = this.slug;
+        var disqus_config = function () {
+            this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
+            this.page.identifier = this.slug;
+        };
+        (function() {
+            if (window.DISQUS) {
+                DISQUS.reset({
+                    reload: true,
+                    config: function () {
+                        this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
+                        this.page.identifier = this.slug;
+                    }
+                });
+            } else {
+                var d = document, s = d.createElement('script');
+                s.src = '//skippable.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            }
+        })();
+    }
+
+});
+
 Template.singleEpisode.onRendered(function() {
     $('.ui.accordion').accordion();
+
 });
 
 Template.seriesHomepage.onRendered(function() {
 
 });
-
-
-
 
 Template.addArcDropdown.events({
     'click .addArcButton': function() {
@@ -131,12 +159,9 @@ Template.addArcDropdown.events({
 
         //update episode, and arc
         Meteor.call('updateSeasonArc', arc, episode);
-        
     }
 
 });
-
-
 
 Template.registerHelper('equals', function (a, b) {
     return a === b;

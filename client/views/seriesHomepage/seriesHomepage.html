@@ -1,7 +1,5 @@
 <template name="seriesHomepage">
-
     {{#with currentSeries}}
-
         <div class="series-background" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{backdrop.url}}') no-repeat; background-size: cover; background-position: center top;">
             <div class="ui series-page stackable container inverted grid">
                 <div class="four wide computer tablet only column">
@@ -61,7 +59,7 @@
 <div class="ui huge centered header">Season {{season}}</div>
 {{/if}}
 
-    <div class="title">
+    <div class="title episode-container">
         <div class="ui grid">
             <div class="two-wide-computer three-wide-tablet four-wide-mobile column">
                 <span class="season-icon">S {{season}}</span><br/><span class="season-icon">E {{number}}</span>
@@ -76,10 +74,9 @@
                 </div>
             {{/if}}
             </div>
-
         </div>
     </div>
-    <div class="content">
+    <div class="content" id="{{ _id}}">
         <p>{{{description}}}</p>
         {{#if currentUser }}
             <div class="ui four column right aligned doubling grid">
@@ -93,8 +90,8 @@
                 </div>
             </div>
         {{/if}}
-    </div>
 
+    </div>
     <div class="ui section divider"></div>
 </template>
 
@@ -104,6 +101,9 @@
 </template>
 
 <template name="singleArcLabel">
+    {{#if currentUser }}
+        <i class="remove circle icon"></i>
+    {{/if}}
     <span class="ui mini {{colour}} arc tag label">{{title}}</span>
 </template>
 

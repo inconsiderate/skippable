@@ -87,7 +87,9 @@ html, body {
     margin-top: 3em;
 }
 
-
+#disqus_thread {
+    margin-top: 2em;
+}
 
 .ui.checkbox {
     margin-right: 20px;
