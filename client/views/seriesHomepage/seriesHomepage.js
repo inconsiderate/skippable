@@ -114,31 +114,33 @@ Template.singleEpisode.helpers({
 
 Template.singleEpisode.events({
     'click .episode-container': function(event) {
-        $('#disqus_thread').remove();
-        $('#' + this._id).append("<div id='disqus_thread'></div>");
+        if ($("#episode-comments-toggle").prop('checked')) {
+            $('#disqus_thread').remove();
+            $('#' + this._id).append("<div id='disqus_thread'></div>");
 
-        var slug = this.slug;
-        var id = this.id;
-        var disqus_config = function () {
-            this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
-            this.page.identifier = slug;
-        };
-        (function() {
-            if (window.DISQUS) {
-                DISQUS.reset({
-                    reload: true,
-                    config: function () {
-                        this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
-                        this.page.identifier = slug;
-                    }
-                });
-            } else {
-                var d = document, s = d.createElement('script');
-                s.src = '//skippable.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            }
-        })();
+            var slug = this.slug;
+            var id = this.id;
+            var disqus_config = function () {
+                this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
+                this.page.identifier = slug;
+            };
+            (function() {
+                if (window.DISQUS) {
+                    DISQUS.reset({
+                        reload: true,
+                        config: function () {
+                            this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
+                            this.page.identifier = slug;
+                        }
+                    });
+                } else {
+                    var d = document, s = d.createElement('script');
+                    s.src = '//skippable.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                }
+            })();
+        }
     }
 
 });
