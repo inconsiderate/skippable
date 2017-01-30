@@ -4,14 +4,13 @@
             <br/>
             <br/>
             {{#each allSeries}}
-            {{> listAllSeries}}
-        {{/each}}
+                {{> singleSeries}}
+            {{/each}}
         </div>
     </div>
 </template>
 
-
-<template name="listAllSeries">
+<template name="singleSeries">
 <div class="item" id="{{slug}}">
 	{{#if banner}}
 	<div class="ui blurring dimmable medium image">

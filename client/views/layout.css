@@ -15,6 +15,14 @@ html, body {
     width: 200px;
 }
 
+.ui.series-page.container {
+    margin-bottom: 2em;
+}
+
+.episode-list {
+    background-color: #fcfffa;
+}
+
 .ui.series-page.container.grid {
     padding-top: 2em;
 }
@@ -43,9 +51,12 @@ html, body {
     padding-top: 4em;
 }
 
-.ui.inverted.series.header, .ui.inverted.description {
-    font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+.ui.inverted.series.header, .ui.description {
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     color: white;
+}
+.ui.description {
+    margin-bottom: 4em;
 }
 
 #series-list-container {
@@ -83,12 +94,12 @@ html, body {
     z-index: 1000 !important;
 }
 
-#series-list-container {
-    margin-top: 3em;
-}
-
 #disqus_thread {
     margin-top: 2em;
+}
+
+.ui.center.aligned.container.main-body {
+    padding-top: 6em;
 }
 
 .ui.checkbox {
@@ -113,6 +124,9 @@ a {
     margin-top: 3em;
 }
 
+#series-list-container {
+    padding-top: 5em;
+}
 
 .ui.list > .item h3.header {
     margin-bottom: 5px;

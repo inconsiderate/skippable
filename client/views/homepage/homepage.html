@@ -1,19 +1,15 @@
 
 <template name="homepage">
-    <div class="ui center aligned container">
+    <div class="ui center aligned container main-body">
+        <div class="ui segment">
+            <div class="ui header splash">
+                Watch the shows you love, and the plot lines you care about.
+            </div>
 
-        <br/>
-        <br/>
-
-        <div class="ui header">
-            Watch the shows you love, and the plot lines you care about.
+            <div class="ui header splash">
+                Catch up on an old classic you may have missed, without all those boring filler episodes!
+            </div>
         </div>
-
-        <div class="ui header">
-            Catch up on an old classic you may have missed, without all those boring filler episodes!
-        </div>
-
-        <br/>
 
         {{#if currentUser }}
             <div class="ui form centered doubling grid">
@@ -31,11 +27,6 @@
                 <p>testing</p>
             {{/each}}
         {{/if}}
-
-        <br/>
-        <br/>
-        <br/>
-
 
         <h3 class="ui horizontal header divider"><span>Recently Added Series</span></h3>
         <div class="ui equal width centered grid">
