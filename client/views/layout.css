@@ -19,8 +19,9 @@ html, body {
     margin-bottom: 2em;
 }
 
-.episode-list {
+.ui.episode-list.grid {
     background-color: #fcfffa;
+    margin-top: 1em;
 }
 
 .ui.series-page.container.grid {
