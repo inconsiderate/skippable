@@ -145,7 +145,6 @@ Template.singleEpisode.events({
 
 Template.singleEpisode.onRendered(function() {
     $('.ui.accordion').accordion();
-
 });
 
 Template.addArcDropdown.events({
