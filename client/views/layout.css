@@ -101,18 +101,20 @@ html, body {
 
 .ui.center.aligned.main-body {
     padding-top: 6em;
-    height: 100%;
+    height: 120%;
     width: 100%;
     background-size: cover;
     background-position: center top;
-    background-color: black;
+    background-color: #1b1c1d;
 }
 
-.main-body .ui.segment {
+.main-body .ui.segment.outer {
+    padding: 0 !important;
+}
+
+.main-body .ui.segment.inner {
     font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
-    margin-top: 4em;
-    margin-bottom: 4em;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
     min-height: 300px;
     text-align: center;
 }
