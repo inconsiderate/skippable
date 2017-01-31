@@ -1,14 +1,21 @@
 
 <template name="homepage">
-    <div class="ui center aligned container main-body">
+{{#with randomSeries}}
+    <div class="ui center aligned main-body" style="background-size: cover; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}') no-repeat center top; background-color: #1b1c1d">
+    <div class="ui container">
         <div class="ui segment">
-            <div class="ui header splash">
-                Watch the shows you love, and the plot lines you care about.
+            <div class="ui huge header splash">
+                <br/>
+                The shows you love. The plot lines that matter.
+            </div>
+            <br/>
+            <br/>
+            <div class="ui small header splash">
+                <br/>
+                "Skippable.tv literally changed my life"<br/>
+                <span>- A Real Person</span>
             </div>
 
-            <div class="ui header splash">
-                Catch up on an old classic you may have missed, without all those boring filler episodes!
-            </div>
         </div>
 
         {{#if currentUser }}
@@ -22,19 +29,24 @@
                     </form>
                 </div>
             </div>
-            <h3>Search Results</h3>
+<!--             <h3>Search Results</h3>
             {{#each searchResults}}
                 <p>testing</p>
-            {{/each}}
+            {{/each}} -->
         {{/if}}
-
-        <h3 class="ui horizontal header divider"><span>Recently Added Series</span></h3>
-        <div class="ui equal width centered grid">
+        <h3 class="ui computer tablet only horizontal inverted header divider"><span>Recently Added</span></h3>
+        <div class="ui computer tablet only equal width centered grid">
             {{#each recentSeries}}
-                <a href="/series/{{slug}}">
-                    <div class="series-image" style="background-image: url('{{poster.url}}')"></div>
+                <a class="home-page-series" href="/series/{{slug}}">
+                    {{#if poster.url}}
+                        <div class="series-image" style="background-image: url('{{poster.url}}')"></div>
+                    {{else}}
+                        <div class="series-image" style="background-image: url('{{remotePoster}}')"></div>
+                    {{/if}}
                 </a>
             {{/each}}
         </div>
     </div>
+    </div>
+{{/with}}
 </template>

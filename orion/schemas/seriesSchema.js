@@ -66,10 +66,20 @@ Series.attachSchema(new SimpleSchema({
     /**
      * WARNING: the url of the image will not be saved in .image, it will be saved in .image.url.
      */
+    remotePoster: {
+        type: String,
+        label: 'Remote Poster',
+        optional: true
+    },
     poster: orion.attribute('image', {
         label: 'Poster Image',
         optional: true
-    }),
+    }),    
+    remoteBackdrop: {
+        type: String,
+        label: 'Remote Backdrop',
+        optional: true
+    },
     backdrop: orion.attribute('image', {
         label: 'Backdrop Image',
         optional: true

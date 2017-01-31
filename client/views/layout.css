@@ -99,8 +99,26 @@ html, body {
     margin-top: 2em;
 }
 
-.ui.center.aligned.container.main-body {
+.ui.center.aligned.main-body {
     padding-top: 6em;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center top;
+    background-color: black;
+}
+
+.main-body .ui.segment {
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+    margin-top: 4em;
+    margin-bottom: 4em;
+    min-height: 300px;
+    text-align: center;
+}
+
+.home-page-series {
+    margin-bottom: 1em;
 }
 
 .ui.checkbox {
