@@ -1,6 +1,13 @@
 <template name="seriesHomepage">
     {{#with currentSeries}}
-        <div class="series-background" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{backdrop.url}}') no-repeat; background-size: cover; background-position: center top;">
+        <div class="series-background"
+
+            style="
+                background-size: cover;
+                background: url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}') no-repeat center top;
+                background-color: #1b1c1d">
+                <!--background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{backdrop.url}}') no-repeat; background-size: cover; background-position: center top;-->
+            ">
             <div class="ui series-page stackable container inverted grid">
                 <div class="four wide computer tablet only column">
                     <img src="{{poster.url}}">

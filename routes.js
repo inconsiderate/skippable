@@ -11,6 +11,7 @@ Router.route('/', {
     action: function() {
         this.render('seriesHeader', {to: 'header'});
         this.render('homepage', {to: 'content'});
+        this.render('footer', {to: 'footer'});
     }
 });
 
@@ -23,6 +24,7 @@ Router.route('/series/:_slug/:_slug_2', {
     action: function() {
         this.render('seriesHeader', {to: 'header'});
         this.render('seriesHomepage', {to: 'content'});
+        this.render('footer', {to: 'footer'});
     },
     data: {
         episode_filter: {
@@ -57,5 +59,6 @@ Router.route('/series', {
     action: function() {
         this.render('seriesHeader', {to: 'header'});
      	this.render('seriesList', {to: 'content'});
+        this.render('footer', {to: 'footer'});
     }
 });

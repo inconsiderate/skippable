@@ -12,7 +12,7 @@ Template.homepage.helpers({
 		return moment(m).format("MMMM Do YYYY");
 	},
 	randomSeries: function() {
-		var randomnumber = Math.floor(Math.random() * (Series.find().count() - 1)) + 1;
+		var randomnumber = Math.floor(Math.random() * (Series.find().count() - 1));
 		return Series.findOne({}, {skip: randomnumber});
 	}
 });
