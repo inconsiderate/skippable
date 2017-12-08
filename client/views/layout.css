@@ -137,6 +137,12 @@ body.series .ui.inverted.center.aligned.sixteen.wide.grid.segment {
     background: -webkit-radial-gradient(center, circle cover, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%);
 }
 
+#modal-image div {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 0;
+}
+
 .ui.segment.outer {
     padding: 0 !important;
     background-color: #1b1c1d;
