@@ -4,6 +4,12 @@ Router.configure({
 	layoutTemplate: 'layout'
 });
 
+Router.onBeforeAction(function() {
+    $('body').removeClass();
+    $('body').addClass(this.route.getName());
+    this.next();
+});
+
 Router.route('/', {
     waitOn: function () {
         return Meteor.subscribe('series');

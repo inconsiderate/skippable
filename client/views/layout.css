@@ -4,11 +4,14 @@ html, body {
     font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
 }
 
+body.series\.\:\_slug .sticky {
+    position: absolute !important;
+}
 .mini.heart.icon {
     font-size: 15px;
 }
 
-.ui.header {
+.homepage .ui.header {
     color: white;
 }
 
@@ -72,13 +75,25 @@ html, body {
     margin-top: 1em;
 }
 
+.ui.form {
+    margin: 0;
+}
+
+body.series .ui.inverted.center.aligned.sixteen.wide.grid.segment {
+    background: #1b1c1d;
+}
+
 .ui.inverted.center.aligned.sixteen.wide.grid.segment {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
     margin: 0;
+    background: 0;
 }
 
+.ui.inverted.pointing.menu {
+    border: none;
+}
 
 .ui.sidebar {
     right: 50%;
@@ -117,12 +132,12 @@ html, body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background: -moz-radial-gradient(center, circle cover, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+    background: -moz-radial-gradient(center, circle cover, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%);
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0,0,0,0.7)), color-stop(100%, rgba(0,0,0,0.4)));
-    background: -webkit-radial-gradient(center, circle cover, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+    background: -webkit-radial-gradient(center, circle cover, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%);
 }
 
-.main-body .ui.segment.outer {
+.ui.segment.outer {
     padding: 0 !important;
     background-color: #1b1c1d;
     position: absolute;
@@ -136,7 +151,7 @@ html, body {
     transition: all 1s;
 }
 
-.main-body .ui.segment.inner {
+.ui.segment.inner {
     font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
     min-height: 300px;

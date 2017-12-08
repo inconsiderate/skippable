@@ -31,19 +31,21 @@
                             </form>
                         </div>
                     </div><br/>
-                    <div class="ui compact menu">
-                        <div class="ui middle aligned divided list">
-                            {{#each searchResults}}
-                            <div class="item">
-                                <div class="right floated content">
-                                    <a class="ui button addNewSeries" data-poster="{{backdrop_path}}" data-title="{{name}}" data-description="{{overview}}">Add</a>
+                    {{#if searchResults}}
+                        <div class="ui compact menu">
+                            <div class="ui middle aligned divided list">
+                                {{#each searchResults}}
+                                <div class="item">
+                                    <div class="right floated content">
+                                        <a class="ui button addNewSeries" data-poster="{{backdrop_path}}" data-title="{{name}}" data-description="{{overview}}">Add</a>
+                                    </div>
+                                    <img class="ui left floated mini image" src="http://image.tmdb.org/t/p/original/{{poster_path}}">
+                                    <div class="content">{{name}}</div>
                                 </div>
-                                <img class="ui left floated mini image" src="http://image.tmdb.org/t/p/original/{{poster_path}}">
-                                <div class="content">{{name}}</div>
+                                {{/each}}
                             </div>
-                            {{/each}}
                         </div>
-                    </div>
+                    {{/if}}
                 {{/if}}
                 <h3 class="ui horizontal header divider"><span>Recently Added</span></h3>
                 <div class="ui equal width centered grid">
@@ -69,6 +71,7 @@
         background-repeat: no-repeat;
         max-height: 60%;
     ">
+
         <div class="ui icon header">
             <i class="add circle icon"></i>
             <h1 id="modal-title"></h1>
@@ -90,6 +93,6 @@
             </div>
         </div>
     </div>
-
+    <div class="modal-shade"></div>
 </template>
 

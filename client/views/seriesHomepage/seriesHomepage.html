@@ -1,16 +1,17 @@
 <template name="seriesHomepage">
-    {{#with currentSeries}}
-        <div class="series-background"
 
-            style="
-                background-size: cover;
-                background: url('{{#if backdrop.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}') no-repeat center top;
-                background-color: #1b1c1d">
-                <!--background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{backdrop.url}}') no-repeat; background-size: cover; background-position: center top;-->
-            ">
+    <div class="ui center aligned main-body">
+    {{#with currentSeries}}
+        <div class="ui segment outer" style="
+            background-size: cover;
+            background-image: url('{{#if backdrop.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}');
+            background-color: #1b1c1d">
+        </div>
+        <div class="shade"></div>
+            <div class="shade"></div>
             <div class="ui series-page stackable container inverted grid">
                 <div class="four wide computer tablet only column">
-                    <img src="{{poster.url}}">
+                    <img src="{{remotePoster}}">
                 </div>
                 <div class="ui sixteen-wide-mobile twelve-wide-tablet twelve-wide-computer column">
                     <div class="ui centered huge inverted series header">{{title}}
@@ -61,9 +62,9 @@
                     </div>
                 </div>
 
-            </div>
         </div>
     {{/with}}
+            </div>
 </template>
 
 <template name="singleEpisode">

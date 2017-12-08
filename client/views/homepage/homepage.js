@@ -13,7 +13,7 @@ Template.homepage.helpers({
 	},
 	searchResults: function() {
 
-		return Session.get('searchResult').results;
+		return Session.get('searchResult').results.slice(0,5);
 	}
 });
 
