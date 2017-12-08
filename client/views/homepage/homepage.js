@@ -7,22 +7,38 @@ Template.homepage.helpers({
 			return i;
 		}
 	},
-	"startDateFormatted": function(){
-		var m = moment(this.startDate);
-		return moment(m).format("MMMM Do YYYY");
-	},
 	randomSeries: function() {
 		var randomnumber = Math.floor(Math.random() * (Series.find().count() - 1));
 		return Series.findOne({}, {skip: randomnumber});
+	},
+	searchResults: function() {
+
+		return Session.get('searchResult').results;
 	}
 });
 
 Template.homepage.events({
-	'submit #newSeriesForm': function(event) {
+	'click #clearSearch': function() {
+		Session.set('searchResult', false);
+		$('#newSeriesSearch input').val('');
+	},
+	'submit #newSeriesSearch': function(event) {
 		event.preventDefault();
-		var search = event.target.searchBox.value;
+		var query = event.target.searchBox.value;
 
-		Meteor.call('gatherSeriesData', search);
+		url = "https://api.themoviedb.org/3/search/tv?api_key=6d22a3b530e6d0e01197fb9f13b69403&language=en-US&query=" + query + "&page=1";
+		$.get(url, function (data) {
+			Session.set('searchResult', data);
+		});
+	},
+	'click .addNewSeries': function(event) {
+		var background = "url('http://image.tmdb.org/t/p/original" + event.target.dataset.poster +"')";
+		$('#modal-title').text(event.target.dataset.title);
+		$("#modal-description").text(event.target.dataset.description);
+		$("#modal-image").css("background-image", background);
+		$('.ui.basic.modal').modal('show');
+	},
+	'click .confirmAddNewSeries': function(event) {
+		Session.set('searchResult', false);
 	}
-
 });

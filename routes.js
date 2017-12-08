@@ -11,7 +11,6 @@ Router.route('/', {
     action: function() {
         this.render('seriesHeader', {to: 'header'});
         this.render('homepage', {to: 'content'});
-        this.render('footer', {to: 'footer'});
     }
 });
 
@@ -58,6 +57,5 @@ Router.route('/series', {
     action: function() {
         this.render('seriesHeader', {to: 'header'});
      	this.render('seriesList', {to: 'content'});
-        this.render('footer', {to: 'footer'});
     }
 });
