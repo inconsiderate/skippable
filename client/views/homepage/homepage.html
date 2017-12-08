@@ -2,63 +2,63 @@
 <template name="homepage">
 {{#with randomSeries}}
     <div class="ui center aligned main-body">
-    <div class="ui container">
-        <div class="ui segment outer" style="
-                background-size: cover;
-                background: url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}') no-repeat center top;
-                background-color: #1b1c1d">
+        <div class="ui container homepage">
+            <div class="ui segment outer" style="
+                    background-size: cover;
+                    background-image: url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}');
+                    background-color: #1b1c1d">
+            </div>
+            <div class="shade"></div>
             <div class="ui segment inner">
-            <div class="ui huge header splash">
-                <br/>
-                The shows you love. The plot lines that matter.
-            </div>
-            <div class="ui small header splash">
-                <br/>
-                "Skippable.tv literally changed my life"<br/>
-                <span>- A Real Person</span>
-            </div>
-            <br/>
-            {{#if currentUser }}
-                <div class="ui form centered doubling grid">
-                    <div class="ui eight-wide-column field">
-                        <form class="ui form" id="newSeriesSearch">
-                            <div class="field ui action icon input">
-                                <input type="text" name="searchBox" placeholder="Search...">
-                                <i id="clearSearch" class="link window close icon"></i>
-                            </div>
-                        </form>
-                    </div>
-                </div><br/>
-                <div class="ui compact menu">
-                    <div class="ui middle aligned divided list">
-                        {{#each searchResults}}
-                        <div class="item">
-                            <div class="right floated content">
-                                <a class="ui button addNewSeries" data-poster="{{backdrop_path}}" data-title="{{name}}" data-description="{{overview}}">Add</a>
-                            </div>
-                            <img class="ui left floated mini image" src="http://image.tmdb.org/t/p/original/{{poster_path}}">
-                            <div class="content">{{name}}</div>
-                        </div>
-                        {{/each}}
-                    </div>
+                <div class="ui huge header splash">
+                    <br/>
+                    The shows you love. The plot lines that matter.
                 </div>
-            {{/if}}
-            <h3 class="ui horizontal header divider"><span>Recently Added</span></h3>
-            <div class="ui equal width centered grid">
-                {{#each recentSeries}}
-                    <a class="home-page-series" href="/series/{{slug}}">
-                        {{#if poster.url}}
-                            <div class="series-image" style="background-image: url('{{poster.url}}')"></div>
-                        {{else}}
-                            <div class="series-image" style="background-image: url('{{remotePoster}}')"></div>
-                        {{/if}}
-                    </a>
-                {{/each}}
-            </div>
+                <div class="ui small header splash">
+                    <br/>
+                    "Skippable.tv literally changed my life"<br/>
+                    <span>- A Real Person</span>
+                </div>
+                <br/>
+                {{#if currentUser }}
+                    <div class="ui form centered doubling grid">
+                        <div class="ui eight-wide-column field">
+                            <form class="ui form" id="newSeriesSearch">
+                                <div class="field ui action icon input">
+                                    <input type="text" name="searchBox" placeholder="Search...">
+                                    <i id="clearSearch" class="link window close icon"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div><br/>
+                    <div class="ui compact menu">
+                        <div class="ui middle aligned divided list">
+                            {{#each searchResults}}
+                            <div class="item">
+                                <div class="right floated content">
+                                    <a class="ui button addNewSeries" data-poster="{{backdrop_path}}" data-title="{{name}}" data-description="{{overview}}">Add</a>
+                                </div>
+                                <img class="ui left floated mini image" src="http://image.tmdb.org/t/p/original/{{poster_path}}">
+                                <div class="content">{{name}}</div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                {{/if}}
+                <h3 class="ui horizontal header divider"><span>Recently Added</span></h3>
+                <div class="ui equal width centered grid">
+                    {{#each recentSeries}}
+                        <a class="home-page-series" href="/series/{{slug}}">
+                            {{#if poster.url}}
+                                <div class="series-image" style="background-image: url('{{poster.url}}')"></div>
+                            {{else}}
+                                <div class="series-image" style="background-image: url('{{remotePoster}}')"></div>
+                            {{/if}}
+                        </a>
+                    {{/each}}
+                </div>
             </div>
         </div>
-
-    </div>
     </div>
 {{/with}}
 
