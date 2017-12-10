@@ -12,8 +12,10 @@ Template.homepage.helpers({
 		return Series.findOne({}, {skip: randomnumber});
 	},
 	searchResults: function() {
+		if (Session.get('searchResult')) {
 
-		return Session.get('searchResult').results.slice(0,5);
+			return Session.get('searchResult').results.slice(0,5);
+		}
 	}
 });
 
@@ -32,13 +34,46 @@ Template.homepage.events({
 		});
 	},
 	'click .addNewSeries': function(event) {
+		console.log(event.target.dataset.id);
 		var background = "url('http://image.tmdb.org/t/p/original" + event.target.dataset.poster +"')";
 		$('#modal-title').text(event.target.dataset.title);
 		$("#modal-description").text(event.target.dataset.description);
 		$("#modal-image").css("background-image", background);
-		$('.ui.basic.modal').modal('show');
+		$('.actions').show();
+
+		$('.ui.basic.modal')
+			.modal('setting', 'transition', 'fade up')
+			.modal({
+				// blurring: true,
+				onApprove : function() {
+					Session.set('searchResult', false);
+					$('#modal-title').text('Please Wait...');
+					$("#modal-description").text('Our worker bees are adding your new series, just give us a moment!');
+					$('.actions').hide();
+
+					Meteor.call('gatherSeriesData', event.target.dataset.id);
+
+					setTimeout(function() {
+						$('.ui.basic.modal').modal('hide');	
+					}, 5000)
+
+					return false;
+				}
+			})
+			.modal('show');
 	},
-	'click .confirmAddNewSeries': function(event) {
-		Session.set('searchResult', false);
-	}
+	// 'click .ui.green.ok.inverted.button': function(event) {
+	// 	preventDefault();
+	// 	// var result = Meteor.call('gatherSeriesData', search);
+	// 	Session.set('searchResult', false);
+	// 	// console.log(result);
+
+	// 	$('#modal-title').text('Please Wait a Moment...');
+	// 	$("#modal-description").text('We are adding your new series!');
+
+	// 	setTimeout(function() {
+	// 			$('.ui.basic.modal').modal('hide');	
+	// 	}, 5000)
+
+	// }
 });

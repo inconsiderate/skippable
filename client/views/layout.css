@@ -124,6 +124,10 @@ body.series .ui.inverted.center.aligned.sixteen.wide.grid.segment {
     width: 100%;
 }
 
+.ui.modal {
+    top: 0;
+}
+
 .shade {
     position: absolute;
     top: 0;
