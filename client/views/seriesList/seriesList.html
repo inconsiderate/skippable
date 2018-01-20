@@ -2,38 +2,21 @@
     <div class="container" id="series-list-container">
         <div class="ui divided items">
             <br/>
-            <br/>
             {{#each allSeries}}
-            {{> listAllSeries}}
-        {{/each}}
+                {{> singleSeries}}
+            {{/each}}
         </div>
     </div>
 </template>
 
-
-<template name="listAllSeries">
+<template name="singleSeries">
 <div class="item" id="{{slug}}">
-	{{#if banner}}
-	<div class="ui blurring dimmable medium image">
-		<div class="ui dimmer">
-			<div class="content">
-				<div class="center">
-				{{#if watchnow}}
-					<div class="ui inverted button"><a href={{watchnow}} target="_blank"><i class="video play outline icon"></i> Watch Now</a></div>
-				{{ else }}
-					{{ #if trailer }}
-					<div class="ui inverted button"><a href={{trailer}} target="_blank"><i class="video play outline icon"></i> Watch Trailer</a></div>
-					{{ else }}
-					<div>Media Not Available</div>
-					{{/if}}
-				{{/if}}
-				</div>
-			</div>
+	{{#if remotePoster}}
+		<div class="ui small image">
+			<a href="/series/{{slug}}">
+				<img src="{{remotePoster}}" style="max-width: 150px !important;" class="ui fluid image">
+			</a>
 		</div>
-		<img style="min-width: 350px !important;" class="ui fluid dimmable image">
-		<div style="background: url('{{banner.url}}') no-repeat; background-size:cover; background-position: center; height: 130px;">
-		</div>
-	</div>
 	{{/if}}
 	<div class="content">
 		<div class="header"><a href="/series/{{slug}}">{{title}}</a></div>

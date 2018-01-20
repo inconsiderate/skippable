@@ -16,7 +16,8 @@ Arcs = new orion.collection('arcs', {
         columns: [
             { data: 'title', title: orion.helpers.getTranslation('arcs.schema.title') },
             { data: 'seriesId', title: orion.helpers.getTranslation('arcs.schema.series') },
-            { data: 'colour', title: orion.helpers.getTranslation('arcs.schema.colour') }
+            { data: 'colour', title: orion.helpers.getTranslation('arcs.schema.colour') },
+            { data: 'slug', title: orion.helpers.getTranslation('arcs.schema.slug') }
         ]
     }
 });

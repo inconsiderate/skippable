@@ -35,12 +35,12 @@ matb33:collection-hooks
 mizzao:user-status
 useraccounts:iron-routing
 email@1.1.18
-rzymek:fullcalendar
 semantic:ui
-fullcalendar:fullcalendar
 momentjs:moment
 accounts-ui@1.1.9
-standard-minifier-css@1.3.2
-standard-minifier-js@1.2.1
 shell-server@0.2.1
+<<<<<<< HEAD
+=======
+ecmascript
+>>>>>>> develop
 orionjs:summernote

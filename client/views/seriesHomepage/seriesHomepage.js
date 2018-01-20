@@ -1,8 +1,4 @@
 
-Template.seriesHomepage.onRendered(function() {
-
-});
-
 Template.seriesHomepage.helpers({
     currentSeries: function() {
 
@@ -10,14 +6,14 @@ Template.seriesHomepage.helpers({
     },
 
     filteredEpisodes: function() {
-        this.episode_filter.dep.depend();
-        var query = this.episode_filter.query;
+        var parent = Template.parentData(1);
 
+        parent.episode_filter.dep.depend();
+        var query = parent.episode_filter.query;
         if (query == null) {
-            return Episodes.find();
+            return Episodes.find({seriesId: this._id}, {sort: {season: 1, number: 1}});
         } else {
-
-            return Episodes.find(query);
+            return Episodes.find(query, {sort: {season: 1, number: 1}});
         }
     },
 
@@ -32,15 +28,29 @@ Template.seriesHomepage.helpers({
     },
 
     "startDateFormatted": function(){
-		if (this.releaseDate) {
+		if (this.startDate) {
 			var m = moment(this.startDate).utc();
-			return moment(m).format("MMMM Do YYYY");
+			return moment(m).format("YYYY");
 		} else {
 
 			return false;
 		}
 	}
 });
+
+Template.seriesHomepage.events({
+    'click #newTagSubmit': function(event) {
+        var arc = $('#newTagInputTitle').val();
+        var colour = $('#newTagInputColour').val();
+        var description = $('#newTagInputDescription').val();
+        var series = this._id;
+
+        Meteor.call('addArcToSeason', arc, series, colour, description);
+
+        $('#newTagInputTitle').val('');
+    }
+});
+
 
 Template.singleArcButton.events({
     'click .ui.button': function(event) {
@@ -52,9 +62,7 @@ Template.singleArcButton.events({
         $(event.target).toggleClass('inverted');
         if (query != null) {
             i = query.arcIds.$all.indexOf(id);
-            console.log(i);
             if(i != -1) {
-                console.log('inside');
                 query.arcIds.$all.splice(i, 1);
             } else {
                 query.arcIds.$all.push(id)
@@ -74,8 +82,27 @@ Template.singleArcButton.events({
 
 Template.singleEpisode.helpers({
     episodeArcs: function() {
+        var arcs = Arcs.find({episodeIds: this._id});
+        if (arcs.count() > 0) {
+            return arcs;
+        } else {
+            return false;
+        }
+    },
 
-        return Arcs.find({episodeIds: this._id});
+    episodeArcChoices: function() {
+        var parent = Template.parentData(1);
+
+        var arcs =  Arcs.find( {
+            seriesId: parent._id,
+            episodeIds: { $not: this._id }
+        } );
+
+        if (arcs.count() > 0) {
+            return arcs;
+        } else {
+            return false;
+        }
     },
 
     "startDateFormatted": function(){
@@ -89,3 +116,54 @@ Template.singleEpisode.helpers({
     }
 });
 
+Template.singleEpisode.events({
+    'click .episode-container': function(event) {
+        if ($("#episode-comments-toggle").prop('checked')) {
+            $('#disqus_thread').remove();
+            $('#' + this._id).append("<div id='disqus_thread'></div>");
+
+            var slug = this.slug;
+            var id = this.id;
+            var disqus_config = function () {
+                this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
+                this.page.identifier = slug;
+            };
+            (function() {
+                if (window.DISQUS) {
+                    DISQUS.reset({
+                        reload: true,
+                        config: function () {
+                            this.page.url = 'http://skippable.herokuapp.com/series/' + Template.parentData(1).slug + '/' + slug;
+                            this.page.identifier = slug;
+                        }
+                    });
+                } else {
+                    var d = document, s = d.createElement('script');
+                    s.src = '//skippable.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                }
+            })();
+        }
+    }
+
+});
+
+Template.singleEpisode.onRendered(function() {
+    $('.ui.accordion').accordion();
+});
+
+Template.addArcDropdown.events({
+    'click .addArcButton': function() {
+        var episode = Template.parentData(1)._id;
+        var arc = this._id;
+
+        //update episode, and arc
+        Meteor.call('updateSeasonArc', arc, episode);
+    }
+
+});
+
+Template.registerHelper('equals', function (a, b) {
+    return a === b;
+});

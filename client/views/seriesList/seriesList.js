@@ -5,9 +5,9 @@ Template.seriesList.helpers({
     }
 });
 
-Template.seriesList.helpers({
-    "startDateFormatted": function(){
-        if (this.releaseDate) {
+Template.singleSeries.helpers({
+    startDateFormatted: function(){
+        if (this.startDate) {
             var m = moment(this.startDate).utc();
             return moment(m).format("MMMM Do YYYY");
         } else {

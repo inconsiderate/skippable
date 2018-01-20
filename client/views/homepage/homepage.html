@@ -1,82 +1,97 @@
 
 <template name="homepage">
-    <div class="ui center aligned container">
-        <br/>
-        <br/>
-        <div class="ui header">
-            Watch the shows you love, and the plot lines you care about.
-        </div>
-
-        <div class="ui header">
-            Catch up on an old classic you may have missed, without all those boring filler episodes!
-        </div>
-        <br/>
-        {{#if currentUser }}
-        <div class="ui form centered doubling grid">
-            <div class="ui eight wide column field">
-                <form class="ui form" id="click-me">
-                    <div class="field">
-                        <input type="text" name="searchBox" placeholder="Search Box">
-                    </div>
-                    <button class="ui button" type="submit">Search</button>
-                </form>
+{{#with randomSeries}}
+    <div class="ui center aligned main-body">
+        <div class="ui container homepage">
+            <div class="ui segment outer" style="
+                    background-size: cover;
+                    background-image: url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}');
+                    background-color: #1b1c1d">
+            </div>
+            <div class="shade"></div>
+            <div class="ui segment inner">
+                <div class="ui huge header splash">
+                    <br/>
+                    The shows you love. The plot lines that matter.
+                </div>
+                <div class="ui small header splash">
+                    <br/>
+                    "Skippable.tv literally changed my life"<br/>
+                    <span>- A Real Person</span>
+                </div>
+                <br/>
+                {{#if currentUser }}
+                    <div class="ui form centered doubling grid">
+                        <div class="ui eight-wide-column field">
+                            <form class="ui form" id="newSeriesSearch">
+                                <div class="field ui action icon input">
+                                    <input type="text" name="searchBox" placeholder="Search...">
+                                    <i id="clearSearch" class="link window close icon"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div><br/>
+                    {{#if searchResults}}
+                        <div class="ui compact menu">
+                            <div class="ui middle aligned divided list">
+                                {{#each searchResults}}
+                                <div class="item">
+                                    <div class="right floated content">
+                                        <a class="ui button addNewSeries" data-id="{{id}}" data-poster="{{backdrop_path}}" data-title="{{name}}" data-description="{{overview}}">Add</a>
+                                    </div>
+                                    <img class="ui left floated mini image" src="http://image.tmdb.org/t/p/original/{{poster_path}}">
+                                    <div class="content">{{name}}</div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/if}}
+                <h3 class="ui horizontal header divider"><span>Recently Added</span></h3>
+                <div class="ui equal width centered grid">
+                    {{#each recentSeries}}
+                        <a class="home-page-series" href="/series/{{slug}}">
+                            {{#if poster.url}}
+                                <div class="series-image" style="background-image: url('{{poster.url}}')"></div>
+                            {{else}}
+                                <div class="series-image" style="background-image: url('{{remotePoster}}')"></div>
+                            {{/if}}
+                        </a>
+                    {{/each}}
+                </div>
             </div>
         </div>
-        <h3>Search Results</h3>
-        {{#each searchResults}}
-        <p>testing</p>
-        {{/each}}
-        {{/if}}
-        <br/>
-        <br/>
-        <br/>
-
-
-        <h3 class="ui horizontal header divider"><span>Recently Added Series</span></h3>
-        <div class="ui equal width centered grid">
-            {{#each recentSeries}}
-                <a href="/series/{{slug}}">
-                    <div class="series-image" style="background-image: url('{{poster.url}}')"></div>
-                </a>
-            {{/each}}
-        </div>
-        <!--<table class="ui very basic collapsing celled striped table">-->
-            <!--<thead>-->
-            <!--<tr>-->
-                <!--<th></th>-->
-                <!--<th></th>-->
-                <!--<th></th>-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--{{#each recentSeries}}-->
-                <!--&lt;!&ndash;<a href="/series/{{slug}}">&ndash;&gt;-->
-                <!--<tr>-->
-                    <!--<td>-->
-                        <!--<h4 class="ui image header">-->
-                            <!--<div class="content">-->
-                                <!--{{ title }}-->
-                                <!--<div class="sub header">{{ studio }}-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</h4>-->
-                    <!--</td>-->
-                    <!--<td>-->
-                        <!--{{{ description }}}-->
-                    <!--</td>-->
-                    <!--<td>-->
-                        <!--{{ startDateFormatted }}-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--&lt;!&ndash;</a>&ndash;&gt;-->
-            <!--{{/each}}-->
-            <!--<tr>-->
-                <!--<td></td>-->
-                <!--<td></td>-->
-                <!--<td></td>-->
-                <!--<td></td>-->
-            <!--</tr>-->
-            <!--</tbody>-->
-        <!--</table>-->
     </div>
+{{/with}}
+
+    <div id="modal-image" class="ui basic modal" style="
+        background-image: url();
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: auto;
+    ">
+        <div class="ui icon header">
+            <i class="add circle icon"></i>
+            <h1 id="modal-title"></h1>
+        </div>
+        <div class="content">
+            <p id="modal-description"></p>
+            <p></p>
+            <p>Please allow a minute or two after adding for us to gather all the episode information, before you start adding categories or making changes! We're kind of slow. :(</p>
+        </div>
+        <div class="actions">
+            <h3> Add New Series?</h3>
+            <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+            </div>
+            <div class="ui green ok inverted button">
+                <i class="checkmark icon"></i>
+                Yes
+            </div>
+        </div>
+    </div>
+    <div class="modal-shade"></div>
 </template>
+

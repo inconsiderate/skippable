@@ -8,10 +8,10 @@ Series.attachSchema(new SimpleSchema({
         label: 'Episodes for this Series',
         optional: true
     }, {
-        collection: Episodes,        
+        collection: Episodes,
         titleField: 'title',
         publicationName: 'seriesepisode'
-    }),    
+    }),
     themoviedb: {
         type: Number,
         label: "movieDB ID"
@@ -54,15 +54,36 @@ Series.attachSchema(new SimpleSchema({
         },
         optional: true
     },
-    description: orion.attribute('summernote', {
-        label: orion.helpers.getTranslation('series.schema.description'), // We use this function to make i18n work in autoform
+    // description: orion.attribute('summernote', {
+    //     label: orion.helpers.getTranslation('series.schema.description'), // We use this function to make i18n work in autoform
+    description: {
+        type: String,
+        label: 'Description',
         optional: true
-    }),
+    },
+    // description: orion.attribute('summernote', {
+    //     label: orion.helpers.getTranslation('series.schema.description'), // We use this function to make i18n work in autoform
+    //     optional: true
+    // }),
     /**
      * WARNING: the url of the image will not be saved in .image, it will be saved in .image.url.
      */
+    remotePoster: {
+        type: String,
+        label: 'Remote Poster',
+        optional: true
+    },
     poster: orion.attribute('image', {
         label: 'Poster Image',
+        optional: true
+    }),    
+    remoteBackdrop: {
+        type: String,
+        label: 'Remote Backdrop',
+        optional: true
+    },
+    backdrop: orion.attribute('image', {
+        label: 'Backdrop Image',
         optional: true
     }),
     /**
