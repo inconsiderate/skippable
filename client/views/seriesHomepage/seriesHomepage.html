@@ -89,7 +89,7 @@
             </div>
         </div>
     </div>
-    <div class="content" id="{{ _id}}">
+    <div class="content{{#if equals number 1}} active{{/if}}" id="{{ _id}}">
         <p>{{{description}}}</p>
         {{#if currentUser }}
             <div class="ui four column right aligned doubling grid">

@@ -29,6 +29,7 @@ body.series\.\:\_slug .sticky {
 .ui.episode-list.grid {
     background-color: #fcfffa;
     margin-top: 1em;
+    z-index: 100;
 }
 
 .ui.series-page.container.grid {
@@ -73,6 +74,7 @@ body.series\.\:\_slug .sticky {
 
 #new-tag-column {
     margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .ui.form {
