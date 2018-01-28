@@ -65,3 +65,10 @@ Router.route('/series', {
      	this.render('seriesList', {to: 'content'});
     }
 });
+
+Router.route('/about', {
+    action: function() {
+        this.render('seriesHeader', {to: 'header'});
+        this.render('about', {to: 'content'});
+    }
+});

@@ -81,7 +81,7 @@ body.series\.\:\_slug .sticky {
     margin: 0;
 }
 
-body.series .ui.inverted.center.aligned.sixteen.wide.grid.segment {
+body.series .ui.inverted.center.aligned.sixteen.wide.grid.segment, body.about .ui.inverted.center.aligned.sixteen.wide.grid.segment {
     background: #1b1c1d;
 }
 
