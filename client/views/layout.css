@@ -233,3 +233,15 @@ a {
 a:hover {
     color:black;
 }
+
+#login-buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 15px;
+}
+
+#login-dropdown-list {
+    left: auto;
+    right: -1px;
+}

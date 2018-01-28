@@ -21,7 +21,13 @@ Template.seriesHomepage.helpers({
     },
 
     seriesArcs: function() {
-        return Arcs.find({seriesId: this._id});
+        var arcs = Arcs.find({seriesId: this._id});
+
+        if (arcs.count() > 0) {
+            return arcs;
+        } else {
+            return false;
+        }
     },
 
     "startDateFormatted": function(){

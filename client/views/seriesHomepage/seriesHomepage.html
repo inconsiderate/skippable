@@ -20,12 +20,17 @@
                     <p class="ui inverted description">{{{description}}}</p>
                 </div>
 
-                {{#if seriesArcs}}
                     <div class="ui sixteen wide column computer tablet only segment">
-                        {{#each seriesArcs}}
-                            {{> singleArcButton }}
-                        {{/each}}
-
+                        {{#if seriesArcs}}
+                            {{#each seriesArcs}}
+                                {{> singleArcButton }}
+                            {{/each}}
+                        {{else}}
+                        <div class="ui centered small header">
+                            This series has no plot arcs listed yet!
+                            Want to add some? Login!
+                        </div>
+                        {{/if}}
                         {{#if currentUser }}
                             <div class="ui centered relaxed grid" id="new-tag-column">
                                 <div class="ui right labeled left icon input">
@@ -46,7 +51,7 @@
                         </div>
 
                     </div>
-                {{/if}}
+
 
                 <div class="ui episode-list stackable grid">
                     <div class="ui sixteen-wide-column">
@@ -68,11 +73,11 @@
 </template>
 
 <template name="singleEpisode">
-{{#if equals number 1}}
-<div class="ui huge centered header">Season {{season}}</div>
-{{/if}}
+    {{#if equals number 1}}
+        <div class="ui huge centered header">Season {{season}}</div>
+    {{/if}}
 
-    <div class="title episode-container {{ _id}}">
+    <div class="title episode-container {{#if equals number 1}} active{{/if}} {{ _id}}">
         <div class="ui grid">
             <div class="two-wide-computer three-wide-tablet four-wide-mobile column">
                 <span class="season-icon">S {{season}}</span><br/><span class="season-icon">E {{number}}</span>
@@ -89,6 +94,7 @@
             </div>
         </div>
     </div>
+
     <div class="content{{#if equals number 1}} active{{/if}}" id="{{ _id}}">
         <p>{{{description}}}</p>
         {{#if currentUser }}
