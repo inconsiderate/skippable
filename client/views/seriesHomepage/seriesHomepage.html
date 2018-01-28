@@ -12,7 +12,6 @@
             <div class="ui series-page stackable container inverted grid">
                 <div class="four wide computer tablet only column">
                     <img src="{{remotePoster}}">
-                    <div>delete series</div>
                 </div>
                 <div class="ui sixteen-wide-mobile twelve-wide-tablet twelve-wide-computer column">
                     <div class="ui centered huge inverted series header">{{title}}
@@ -21,38 +20,42 @@
                     <p class="ui inverted description">{{{description}}}</p>
                 </div>
 
-                    <div class="ui sixteen wide column computer tablet only segment">
-                        {{#if seriesArcs}}
-                            {{#each seriesArcs}}
-                                {{> singleArcButton }}
-                            {{/each}}
-                        {{else}}
-                        <div class="ui centered small header">
-                            This series has no plot arcs listed yet!
-                            Want to add some? Login!
-                        </div>
-                        {{/if}}
-                        {{#if currentUser }}
-                            <div class="ui centered relaxed grid" id="new-tag-column">
-                                <div class="ui right labeled left icon input">
-                                    <i class="tags icon"></i>
-                                    <input id="newTagInputTitle" type="text" placeholder="title">
-                                    <input id="newTagInputColour" type="text" placeholder="colour">
-                                    <input id="newTagInputDescription" type="text" placeholder="description">
-                                    <a id="newTagSubmit" class="ui tag label">
-                                        add tag
-                                    </a>
-                                </div>
-                            </div>
-                        {{/if}}
+                {{#if isAdmin }}
+                    <button class="ui centered labeled icon red button delete-series">
+                        <i class="remove circle icon"></i>Delete Series
+                    </button>
+                {{/if}}
 
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" id="episode-comments-toggle">
-                            <label>View Episode Comments</label>
-                        </div>
-
+                <div class="ui sixteen wide column computer tablet only segment">
+                    {{#if seriesArcs}}
+                        {{#each seriesArcs}}
+                            {{> singleArcButton }}
+                        {{/each}}
+                    {{else}}
+                    <div class="ui centered small header">
+                        This series has no plot arcs listed yet!
+                        Want to add some? Login!
                     </div>
+                    {{/if}}
+                    {{#if currentUser }}
+                        <div class="ui centered relaxed grid" id="new-tag-column">
+                            <div class="ui right labeled left icon input">
+                                <i class="tags icon"></i>
+                                <input id="newTagInputTitle" type="text" placeholder="title">
+                                <input id="newTagInputColour" type="text" placeholder="colour">
+                                <input id="newTagInputDescription" type="text" placeholder="description">
+                                <a id="newTagSubmit" class="ui tag label">
+                                    add tag
+                                </a>
+                            </div>
+                        </div>
+                    {{/if}}
 
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" id="episode-comments-toggle">
+                        <label>View Episode Comments</label>
+                    </div>
+                </div>
 
                 <div class="ui episode-list stackable grid">
                     <div class="ui sixteen-wide-column">

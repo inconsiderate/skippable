@@ -50,6 +50,10 @@ Template.seriesHomepage.events({
         Meteor.call('addArcToSeason', arc, series, colour, description);
 
         $('#newTagInputTitle').val('');
+    },
+
+    'click .delete-series': function(event) {
+        Meteor.call('deleteSeries', this._id);
     }
 });
 
