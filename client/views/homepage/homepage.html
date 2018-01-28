@@ -13,19 +13,35 @@
             <div class="shade"></div>
             <div class="ui segment inner">
                 <div class="hidden click-me">CLICK ME</div>
-                <h1 class="ui huge header splash">The shows you love. The plot lines that matter.</h1>
-                <div class="ui small header splash">
-                    <br/>
-                    "Skippable.tv literally changed my life"<br/>
-                    <span>- A Real Person</span>
+                <h1 class="ui huge header splash">The shows you love. <br/>The plot lines that matter.</h1>
+                <br/>
+                <br/>
+                <br/>
+                <div class="ui centered equal width doubling grid">
+                    <div class="ui column">
+                        <div class="ui small centered header splash">
+                            <br/>
+                            "Skippable.tv literally changed my life."<br/>
+                            <span>- A Real Person</span>
+                        </div>                     
+                    </div>
+                    <div class="ui column">
+                        <div class="ui small centered header splash">
+                            <br/>
+                            "Now I can skip straight to the episodes with Angel, and skip all that boring Spike stuff!"<br/>
+                            <span>- Someone Who Clearly Has No Taste</span>
+                        </div>                        
+                    </div>
                 </div>
+                <br/>
+                <br/>
                 <br/>
                 {{#if currentUser }}
                     <div class="ui form centered doubling grid">
                         <div class="ui eight-wide-column field">
                             <form class="ui form" id="newSeriesSearch">
                                 <div class="field ui action icon input">
-                                    <input type="text" name="searchBox" placeholder="Search...">
+                                    <input type="text" name="searchBox" placeholder="Search for new series..">
                                     <i id="clearSearch" class="link window close icon"></i>
                                 </div>
                             </form>
