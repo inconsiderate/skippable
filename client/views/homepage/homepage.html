@@ -6,10 +6,13 @@
             <div class="ui segment outer" style="
                 background-size: cover;
                 background-image: url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}');
-                background-color: #1b1c1d">
+                background-color: #1b1c1d;
+                background-position: center;
+                ">
             </div>
             <div class="shade"></div>
             <div class="ui segment inner">
+                <div class="hidden click-me">CLICK ME</div>
                 <h1 class="ui huge header splash">The shows you love. The plot lines that matter.</h1>
                 <div class="ui small header splash">
                     <br/>

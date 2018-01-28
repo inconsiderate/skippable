@@ -1,13 +1,15 @@
 
 if (Meteor.isServer) {
-    if (Series.find().count() < 3) {
+    if (Series.find().count() < 4) {
         Series.remove({});
+        Episodes.remove({});
+        Arcs.remove({});
 
         var newSeries = Series.insert({
-            title: 'Buffy',
+            title: 'Buffy Fixture',
             description: 'A description',
             slug: 'buffy-the-vampire-slayer',
-            themoviedb: 1234,
+            themoviedb: 95,
             startDate: new Date(),
             studio: 'Fox',
             remotePoster: 'https://image.tmdb.org/t/p/w440_and_h660_bestv2/uzr2KkwC67BNpFj1RKQObWBfh9m.jpg',

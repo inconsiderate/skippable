@@ -21,6 +21,11 @@ Template.homepage.helpers({
 });
 
 Template.homepage.events({
+	'click .click-me': function() {
+		console.log('clicky click');
+		Meteor.call('nightlySeriesUpdate');
+	},
+
 	'click #clearSearch': function() {
 		Session.set('searchResult', false);
 		$('#newSeriesSearch input').val('');
