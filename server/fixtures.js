@@ -1,18 +1,18 @@
-//
-// if (Meteor.isServer) {
-//     if (Series.find().count() < 3) {
-//         Series.remove({});
-//
-//         var mike = Accounts.createUser({
-//             email: 'mike@gmail.com',
-//             createdAt: new Date(),
-//             password: 'password',
-//             profile: {
-//                 username: 'mike',
-//                 series: [],
-//                 bio: "After climbing mountains and catching international terrorists, I like to relax in the evenings with a cold glass of milk."
-//             }
-//         });
+
+if (Meteor.isServer) {
+    if (Series.find().count() < 3) {
+        Series.remove({});
+
+        var newSeries = Series.insert({
+            title: 'Buffy',
+            description: 'A description',
+            slug: 'buffy-the-vampire-slayer',
+            themoviedb: 1234,
+            startDate: new Date(),
+            studio: 'Fox',
+            remotePoster: 'https://image.tmdb.org/t/p/w440_and_h660_bestv2/uzr2KkwC67BNpFj1RKQObWBfh9m.jpg',
+            remoteBackdrop: 'https://image.tmdb.org/t/p/original/tkyWzwwYptHDAXZfFk1patcl79N.jpg'
+        });
 //
 //         var buffy = Series.insert({
 //             title: 'Buffy the Vampire Slayer',
@@ -229,5 +229,5 @@
 //                 "profile.series": {$each: [buffy, battlestar]}
 //             }
 //         });
-//     }
-// }
+    }
+}

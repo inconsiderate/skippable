@@ -9,6 +9,7 @@ Template.homepage.helpers({
 	},
 	randomSeries: function() {
 		var randomnumber = Math.floor(Math.random() * (Series.find().count() - 1));
+
 		return Series.findOne({}, {skip: randomnumber});
 	},
 	searchResults: function() {
@@ -34,7 +35,6 @@ Template.homepage.events({
 		});
 	},
 	'click .addNewSeries': function(event) {
-		console.log(event.target.dataset.id);
 		var background = "url('http://image.tmdb.org/t/p/original" + event.target.dataset.poster +"')";
 		$('#modal-title').text(event.target.dataset.title);
 		$("#modal-description").text(event.target.dataset.description);

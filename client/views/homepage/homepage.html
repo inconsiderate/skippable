@@ -4,16 +4,13 @@
     <div class="ui center aligned main-body">
         <div class="ui container homepage">
             <div class="ui segment outer" style="
-                    background-size: cover;
-                    background-image: url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}');
-                    background-color: #1b1c1d">
+                background-size: cover;
+                background-image: url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}');
+                background-color: #1b1c1d">
             </div>
             <div class="shade"></div>
             <div class="ui segment inner">
-                <div class="ui huge header splash">
-                    <br/>
-                    The shows you love. The plot lines that matter.
-                </div>
+                <h1 class="ui huge header splash">The shows you love. The plot lines that matter.</h1>
                 <div class="ui small header splash">
                     <br/>
                     "Skippable.tv literally changed my life"<br/>
@@ -36,11 +33,22 @@
                             <div class="ui middle aligned divided list">
                                 {{#each searchResults}}
                                 <div class="item">
-                                    <div class="right floated content">
-                                        <a class="ui button addNewSeries" data-id="{{id}}" data-poster="{{backdrop_path}}" data-title="{{name}}" data-description="{{overview}}">Add</a>
+                                    <div class="ui small image">
+                                       <img src="http://image.tmdb.org/t/p/original/{{poster_path}}">
                                     </div>
-                                    <img class="ui left floated mini image" src="http://image.tmdb.org/t/p/original/{{poster_path}}">
-                                    <div class="content">{{name}}</div>
+                                    <div class="middle aligned content">
+                                        <div class="header">
+                                            {{name}}
+                                        </div>
+                                        <div class="description">
+                                            <p>{{overview}}</p>
+                                        </div>
+                                        <div class="extra">
+                                            <div class="ui right floated button addNewSeries" data-id="{{id}}" data-poster="{{backdrop_path}}" data-title="{{name}}" data-description="{{overview}}">
+                                                Add
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 {{/each}}
                             </div>
@@ -78,6 +86,8 @@
         <div class="content">
             <p id="modal-description"></p>
             <p></p>
+            <br/>
+            <br/>
             <p>Please allow a minute or two after adding for us to gather all the episode information, before you start adding categories or making changes! We're kind of slow. :(</p>
         </div>
         <div class="actions">
