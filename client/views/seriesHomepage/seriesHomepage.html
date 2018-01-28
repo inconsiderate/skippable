@@ -69,7 +69,7 @@
 
         </div>
     {{/with}}
-            </div>
+    </div>
 </template>
 
 <template name="singleEpisode">
@@ -98,10 +98,10 @@
     <div class="content{{#if equals number 1}} active{{/if}}" id="{{ _id}}">
         <p>{{{description}}}</p>
         {{#if currentUser }}
-            <div class="ui four column right aligned doubling grid">
+            <div class="ui four column right aligned doubling grid add-arc-container">
                 <div class="sixteen-wide-column">
                     {{#if episodeArcChoices }}
-                        <div>Add Arc to Episode</div>
+                        <div class="ui small header">Add Arcs to Episode</div>
                         {{#each episodeArcChoices}}
                             {{> addArcDropdown }}
                         {{/each}}
@@ -120,10 +120,14 @@
 </template>
 
 <template name="singleArcLabel">
-    {{#if currentUser }}
-        <i class="remove circle icon"></i>
-    {{/if}}
-    <div class="ui mini {{colour}} arc tag right floated button label">{{title}}</div>
+
+    <div class="ui mini {{colour}} arc tag right floated button label">
+        {{title}}
+        {{#if currentUser }}
+            <i class="large remove circle icon"></i>
+        {{/if}}
+    </div>
+
 </template>
 
 <template name="addArcDropdown">

@@ -245,3 +245,7 @@ a:hover {
     left: auto;
     right: -1px;
 }
+
+.accordion div.add-arc-container {
+    margin-top: 1em;
+}

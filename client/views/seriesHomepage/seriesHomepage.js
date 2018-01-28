@@ -147,6 +147,16 @@ Template.singleEpisode.events({
                 }
             })();
         }
+    },
+    'click .remove.icon': function(event) {
+        // stop accordion from firing
+        event.stopPropagation();
+
+        var episode = Template.parentData(0)._id;
+        var arc = this._id;
+
+        //update episode, and arc
+        Meteor.call('removeArcFromEpisode', arc, episode);
     }
 
 });
@@ -168,4 +178,10 @@ Template.addArcDropdown.events({
 
 Template.registerHelper('equals', function (a, b) {
     return a === b;
+});
+
+Template.registerHelper('isAdmin', function () {
+    var user = Meteor.user();
+    
+    return user.hasRole('admin');
 });
