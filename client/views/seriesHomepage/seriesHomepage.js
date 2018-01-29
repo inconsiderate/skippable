@@ -165,8 +165,24 @@ Template.singleEpisode.events({
 
 });
 
+Template.seriesHomepage.onRendered(function() {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+            $('.ui.inverted.grid.segment.fixed').addClass('black')
+        }
+        if ($(this).scrollTop() < 50) {
+            $('.ui.inverted.grid.segment.fixed').removeClass('black')
+        }
+    });
+});
+
 Template.singleEpisode.onRendered(function() {
     $('.ui.accordion').accordion();
+
+    $('.ui.sticky').sticky({
+        context: '#episode-list',
+        offset: 80,
+    });
 });
 
 Template.addArcDropdown.events({
