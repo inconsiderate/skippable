@@ -86,6 +86,11 @@ Series.attachSchema(new SimpleSchema({
         label: 'Backdrop Image',
         optional: true
     }),
+    status: {
+        type: String,
+        label: 'Status',
+        optional: true
+    },
     /**
      * This attribute sets the user id of the user that created this post automatically.
      */

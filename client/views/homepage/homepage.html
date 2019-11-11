@@ -4,28 +4,44 @@
     <div class="ui center aligned main-body">
         <div class="ui container homepage">
             <div class="ui segment outer" style="
-                    background-size: cover;
-                    background-image: url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}');
-                    background-color: #1b1c1d">
+                background-size: cover;
+                background-image: url('{{#if poster.url}} {{backdrop.url}} {{else}} {{remoteBackdrop}} {{/if}}');
+                background-color: #1b1c1d;
+                background-position: center;
+                ">
             </div>
             <div class="shade"></div>
             <div class="ui segment inner">
-                <div class="ui huge header splash">
-                    <br/>
-                    The shows you love. The plot lines that matter.
+                <button class="hidden click-me">CLICK ME</button>
+                <h1 class="ui huge header splash">The shows you love. <br/>The plot lines that matter.</h1>
+                <br/>
+                <br/>
+                <br/>
+                <div class="ui centered equal width doubling grid">
+                    <div class="ui column">
+                        <div class="ui small centered header splash">
+                            <br/>
+                            "Skippable.tv literally changed my life."<br/>
+                            <span>- A Real Person</span>
+                        </div>                     
+                    </div>
+                    <div class="ui column">
+                        <div class="ui small centered header splash">
+                            <br/>
+                            "Now I can skip straight to the episodes with Angel, and skip all that boring Spike stuff!"<br/>
+                            <span>- Someone Who Clearly Has No Taste</span>
+                        </div>                        
+                    </div>
                 </div>
-                <div class="ui small header splash">
-                    <br/>
-                    "Skippable.tv literally changed my life"<br/>
-                    <span>- A Real Person</span>
-                </div>
+                <br/>
+                <br/>
                 <br/>
                 {{#if currentUser }}
                     <div class="ui form centered doubling grid">
                         <div class="ui eight-wide-column field">
                             <form class="ui form" id="newSeriesSearch">
                                 <div class="field ui action icon input">
-                                    <input type="text" name="searchBox" placeholder="Search...">
+                                    <input type="text" name="searchBox" placeholder="Search for new series..">
                                     <i id="clearSearch" class="link window close icon"></i>
                                 </div>
                             </form>
@@ -36,11 +52,22 @@
                             <div class="ui middle aligned divided list">
                                 {{#each searchResults}}
                                 <div class="item">
-                                    <div class="right floated content">
-                                        <a class="ui button addNewSeries" data-id="{{id}}" data-poster="{{backdrop_path}}" data-title="{{name}}" data-description="{{overview}}">Add</a>
+                                    <div class="ui small image">
+                                       <img src="http://image.tmdb.org/t/p/original/{{poster_path}}">
                                     </div>
-                                    <img class="ui left floated mini image" src="http://image.tmdb.org/t/p/original/{{poster_path}}">
-                                    <div class="content">{{name}}</div>
+                                    <div class="middle aligned content">
+                                        <div class="header">
+                                            {{name}}
+                                        </div>
+                                        <div class="description">
+                                            <p>{{overview}}</p>
+                                        </div>
+                                        <div class="extra">
+                                            <div class="ui right floated button addNewSeries" data-id="{{id}}" data-poster="{{backdrop_path}}" data-title="{{name}}" data-description="{{overview}}">
+                                                Add
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 {{/each}}
                             </div>
@@ -78,6 +105,8 @@
         <div class="content">
             <p id="modal-description"></p>
             <p></p>
+            <br/>
+            <br/>
             <p>Please allow a minute or two after adding for us to gather all the episode information, before you start adding categories or making changes! We're kind of slow. :(</p>
         </div>
         <div class="actions">

@@ -1,5 +1,5 @@
 
 # Skippable
 
-Info forthcoming.
+http://skippable.herokuapp.com/
 

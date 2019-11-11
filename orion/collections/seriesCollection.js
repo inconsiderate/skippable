@@ -18,6 +18,7 @@ Series = new orion.collection('series', {
       { data: 'startDate', title: orion.helpers.getTranslation('series.schema.startDate') },
       orion.attributeColumn('image', 'poster', orion.helpers.getTranslation('series.schema.poster')),
       { data: 'episodeCount', title: orion.helpers.getTranslation('series.schema.episodeCount') },
+      { data: 'status', title: 'status' },
       { data: 'slug', title: orion.helpers.getTranslation('series.schema.slug') }
     ]
   }

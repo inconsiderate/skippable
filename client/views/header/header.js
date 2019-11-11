@@ -37,8 +37,6 @@ Template.seriesHeader.events({
             var id = $(event.target).attr('id');
             var query = parent.episode_filter.query;
 
-
-
             if (query != null) {
                 i = query.arcIds.$all.indexOf(id);
                 if(i != -1) {
@@ -66,3 +64,4 @@ Template.seriesHeader.events({
         $('.ui.sidebar').toggleClass('move');
     }
 });
+

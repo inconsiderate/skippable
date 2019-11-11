@@ -10,3 +10,4 @@ Meteor.publish('episodes', function () {
 Meteor.publish('arcs', function () {
     return Arcs.find({});
 });
+

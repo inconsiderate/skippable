@@ -23,8 +23,13 @@ Template.seriesHomepage.helpers({
     },
 
     seriesArcs: function() {
+        var arcs = Arcs.find({seriesId: this._id});
 
-        return Arcs.find({seriesId: this._id});
+        if (arcs.count() > 0) {
+            return arcs;
+        } else {
+            return false;
+        }
     },
 
     "startDateFormatted": function(){
@@ -48,6 +53,10 @@ Template.seriesHomepage.events({
         Meteor.call('addArcToSeason', arc, series, colour, description);
 
         $('#newTagInputTitle').val('');
+    },
+
+    'click .delete-series': function(event) {
+        Meteor.call('deleteSeries', this._id);
     }
 });
 
@@ -145,12 +154,38 @@ Template.singleEpisode.events({
                 }
             })();
         }
+    },
+    'click .remove.icon': function(event) {
+        // stop accordion from firing
+        event.stopPropagation();
+
+        var episode = Template.parentData(0)._id;
+        var arc = this._id;
+
+        //update episode, and arc
+        Meteor.call('removeArcFromEpisode', arc, episode);
     }
 
 });
 
+Template.seriesHomepage.onRendered(function() {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+            $('.ui.inverted.grid.segment.fixed').addClass('black')
+        }
+        if ($(this).scrollTop() < 50) {
+            $('.ui.inverted.grid.segment.fixed').removeClass('black')
+        }
+    });
+});
+
 Template.singleEpisode.onRendered(function() {
     $('.ui.accordion').accordion();
+
+    $('.ui.sticky').sticky({
+        context: '#episode-list',
+        offset: 80,
+    });
 });
 
 Template.addArcDropdown.events({
@@ -166,4 +201,10 @@ Template.addArcDropdown.events({
 
 Template.registerHelper('equals', function (a, b) {
     return a === b;
+});
+
+Template.registerHelper('isAdmin', function () {
+    var user = Meteor.user();
+    
+    return user.hasRole('admin');
 });

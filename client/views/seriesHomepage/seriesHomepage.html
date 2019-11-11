@@ -1,5 +1,4 @@
 <template name="seriesHomepage">
-
     <div class="ui center aligned main-body">
     {{#with currentSeries}}
         <div class="ui segment outer" style="
@@ -8,71 +7,89 @@
             background-color: #1b1c1d">
         </div>
         <div class="shade"></div>
-            <div class="shade"></div>
-            <div class="ui series-page stackable container inverted grid">
-                <div class="four wide computer tablet only column">
-                    <img src="{{remotePoster}}">
+        <div class="ui series-page stackable container inverted grid">
+            <div class="four wide computer tablet only column">
+                <img src="{{remotePoster}}">
+            </div>
+            <div class="ui sixteen-wide-mobile twelve-wide-tablet twelve-wide-computer column">
+                <div class="ui centered huge inverted series header">{{title}}
+                    <div class="sub header">({{startDateFormatted}})</div>
                 </div>
-                <div class="ui sixteen-wide-mobile twelve-wide-tablet twelve-wide-computer column">
-                    <div class="ui centered huge inverted series header">{{title}}
-                        <div class="sub header">({{startDateFormatted}})</div>
-                    </div>
-                    <p class="ui inverted description">{{{description}}}</p>
-                </div>
+                <p class="ui inverted description">{{{description}}}</p>
+            </div>
 
+            {{#if isAdmin }}
+                <button class="ui centered labeled icon red button delete-series">
+                    <i class="remove circle icon"></i>Delete Series
+                </button>
+            {{/if}}
+
+            <div class="ui sixteen wide column computer tablet only segment">
                 {{#if seriesArcs}}
-                    <div class="ui sixteen wide column computer tablet only segment">
-                        {{#each seriesArcs}}
-                            {{> singleArcButton }}
-                        {{/each}}
-
-                        {{#if currentUser }}
-                            <div class="ui centered relaxed grid" id="new-tag-column">
-                                <div class="ui right labeled left icon input">
-                                    <i class="tags icon"></i>
-                                    <input id="newTagInputTitle" type="text" placeholder="title">
-                                    <input id="newTagInputColour" type="text" placeholder="colour">
-                                    <input id="newTagInputDescription" type="text" placeholder="description">
-                                    <a id="newTagSubmit" class="ui tag label">
-                                        add tag
-                                    </a>
-                                </div>
-                            </div>
-                        {{/if}}
-
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" id="episode-comments-toggle">
-                            <label>View Episode Comments</label>
+                    {{#each seriesArcs}}
+                        {{> singleArcButton }}
+                    {{/each}}
+                {{else}}
+                <div class="ui centered small header">
+                    This series has no plot arcs listed yet!
+                    Want to add some? Login!
+                </div>
+                {{/if}}
+                {{#if currentUser }}
+                    <div class="ui centered relaxed grid" id="new-tag-column">
+                        <div class="ui right labeled left icon input">
+                            <i class="tags icon"></i>
+                            <input id="newTagInputTitle" type="text" placeholder="title">
+                            <input id="newTagInputColour" type="text" placeholder="colour">
+                            <input id="newTagInputDescription" type="text" placeholder="description">
+                            <a id="newTagSubmit" class="ui tag label">
+                                add tag
+                            </a>
                         </div>
-
                     </div>
                 {{/if}}
 
-                <div class="ui episode-list stackable grid">
-                    <div class="ui sixteen-wide-column">
-                        <div class="ui centered container">
-                            <br/>
-                            <br/>
-                            <div class="ui accordion">
-                                {{#each filteredEpisodes}}
-                                    {{> singleEpisode }}
-                                {{/each}}
-                            </div>
-                        </div>
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" id="episode-comments-toggle">
+                    <label>View Episode Comments</label>
+                </div>
+            </div>
+
+            <div id="episode-list" class="ui episode-list sixteen-wide-computer sixteen-wide-mobile column" style="z-index: 10;">
+                <!-- <div class="ui left rail computer only">
+                    <div class="ui sticky segment computer only" style="margin-top: 90px; top: 90px;">
+                    {{#if seriesArcs}}
+                        {{#each seriesArcs}}
+                            {{> singleArcButton }}
+                        {{/each}}
+                    {{/if}}
+                    </div>
+                </div> -->
+
+                <div class="ui centered container">
+                    <br/>
+                    <br/>
+                    <div class="ui accordion">
+                        {{#each filteredEpisodes}}
+                            {{> singleEpisode }}
+                        {{/each}}
                     </div>
                 </div>
+            </div>
+
 
         </div>
     {{/with}}
-            </div>
+    </div>
+
 </template>
 
 <template name="singleEpisode">
-{{#if equals number 1}}
-<div class="ui huge centered header">Season {{season}}</div>
-{{/if}}
+    {{#if equals number 1}}
+        <div class="ui huge centered header">Season {{season}}</div>
+    {{/if}}
 
-    <div class="title episode-container {{ _id}}">
+    <div class="title episode-container {{#if equals number 1}} active{{/if}} {{ _id}}">
         <div class="ui grid">
             <div class="two-wide-computer three-wide-tablet four-wide-mobile column">
                 <span class="season-icon">S {{season}}</span><br/><span class="season-icon">E {{number}}</span>
@@ -89,13 +106,14 @@
             </div>
         </div>
     </div>
-    <div class="content" id="{{ _id}}">
+
+    <div class="content{{#if equals number 1}} active{{/if}}" id="{{ _id}}">
         <p>{{{description}}}</p>
         {{#if currentUser }}
-            <div class="ui four column right aligned doubling grid">
+            <div class="ui four column right aligned doubling grid add-arc-container">
                 <div class="sixteen-wide-column">
                     {{#if episodeArcChoices }}
-                        <div>Add Arc to Episode</div>
+                        <div class="ui small header">Add Arcs to Episode</div>
                         {{#each episodeArcChoices}}
                             {{> addArcDropdown }}
                         {{/each}}
@@ -109,15 +127,17 @@
 </template>
 
 <template name="singleArcButton">
-    <span class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</span> {{{description}}}
+    <span class="ui small {{colour}} arc inverted button" id="{{_id}}">{{title}}</span><span class="arc-description">{{{description}}}</span>
     <div class="ui section divider"></div>
 </template>
 
 <template name="singleArcLabel">
-    {{#if currentUser }}
-        <i class="remove circle icon"></i>
-    {{/if}}
-    <div class="ui mini {{colour}} arc tag right floated button label">{{title}}</div>
+    <div class="ui mini {{colour}} arc tag right floated button label">
+        {{title}}
+        {{#if currentUser }}
+            <i class="large remove circle icon"></i>
+        {{/if}}
+    </div>
 </template>
 
 <template name="addArcDropdown">
